@@ -1,4 +1,3 @@
-<? php
 var simplemaps_worldmap_mapdata={
   main_settings: {
    //General settings
@@ -1183,4 +1182,3 @@ var simplemaps_worldmap_mapdata={
     }
   }
 };
-?>

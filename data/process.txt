@@ -1,0 +1,116 @@
+Country
+
+For our country table, there was not an easy way of obtaining all the information we needed at once. Thus, we opted to combine three datasets and exclude some of our initial attributes. The updated attributes for our Country table is Country(countryName, year, continent, government Type, populationMale, populationFemale, populationTotal, and populationDensity). If any row contained the “No data” it was swapped by removing the entry completely.
+
+UN Population Data (csv)
+For the UN PopulationData, we kept it as is, except we removed their additional columns involving: LocID, Variant, MidPeriod, and VarID.
+ 
+Country and Continent Data (csv)
+For Country and Continent Data, it was obtained from a GitHub and it was joined as it was originally uploaded.
+
+Country Government Data Set (webscraped)
+For Country Government Data Set, the governments were webscraped from Wikipedia and put into their own respective csv file.
+
+Country Income Group (csv)
+For this data set, we downloaded the csv file and removed the special notes column.
+
+From here, we used the below Python script to join the csv files to create our Country.csv.
+
+import pandas as pd
+  
+# reading two csv files
+data1 = pd.read_csv('Country_Continents.csv')
+data2 = pd.read_csv('Country_Government.csv')
+data3 = pd.read_csv('Country_Population.csv')
+data4 = pd.read_csv('Country_Income.csv')
+
+output1 = pd.merge(data1, data2, on='Country Name', how='inner')
+output2 = pd.merge(output1, data3, on='Country Name', how='inner')
+output = pd.merge(output2, data4, on='Country Name', how='inner')
+output.to_csv('Country.csv')
+
+Mortality Rate
+
+We got year-wise mortality rates for all countries from the World Bank in CSV format.
+https://data.worldbank.org/indicator/SP.DYN.CDRT.IN
+
+We deleted unnecessary columns from the CSV file. Since the data was given as the number number of deaths per 1000 people, we used the following Python script to get the data in appropriate format:
+
+data = pd.read_csv('mortality-data.csv')
+data.iloc[:, 1:] = data.iloc[:, 1:] / 1000
+
+df = pd.DataFrame()
+df['Country Name'] = []
+df['Year'] = []
+df['Mortality Rate'] = []
+k = 0
+for i in range(len(data)):
+    for j in range(1, len(data.columns)):
+        df.loc[k, 'Country Name'] = data.loc[i, 'Country Name']
+        df.loc[k, 'Year'] = data.columns[j]
+        df.loc[k, 'Mortality Rate'] = data.iloc[i][j]
+        k = k + 1
+
+df.to_csv('Mortality-Rate.csv')
+
+Disease
+
+Disease was taken from all the DiseaseNames from HasDisease.
+
+HasDisease
+
+For the Communicable Diseases, we took a list from the WHO organization and converted all of the related indicators into their csv files then combined them all to get a comprehensive list of the countries with those cases.
+
+import pandas as pd
+
+data1 = pd.read_csv('Buruli_Ulcer.csv')
+data2 = pd.read_csv('Congenital_Rubella_Syndrome.csv')
+data3 = pd.read_csv('Cutaneous_Leishmaniasis.csv')
+data4 = pd.read_csv('Diphtheria.csv')
+data5 = pd.read_csv('HIV.csv')
+data6 = pd.read_csv('Japanese_Encephalitis.csv')
+data7 = pd.read_csv('Leprosy.csv')
+data8 = pd.read_csv('Malaria.csv')
+data9 = pd.read_csv('Measles.csv')
+data10 = pd.read_csv('Neonatal_Tetanus.csv')
+data11 = pd.read_csv('Poliomyelitis.csv')
+data12 = pd.read_csv('Rubella.csv')
+data13 = pd.read_csv('Yellow_Fever.csv')
+
+data_frames = [data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11, data12, data13]
+
+output = pd.concat(data_frames)
+output.to_csv('Has_Disease.csv')
+
+HIV Cases 
+Malaria Cases 
+Meningococcal Meningitis Cases 
+Buruli Ulcer 
+Cutaneous Leishmaniasis 
+Leprosy
+Tuberculosis 
+
+For the tables above, they were listed as non-communicable diseases on the WHO organization website and went through the same process as the communicable diseases. These lists were combined to create the final Disease.csv.
+
+Vaccination / Vaccination Drive
+
+Immunization 
+For Immunization, we decided to extract the vaccines listed on the Immunization portion of the WHO and combine all the tables together into one comprehensive table. Below is the python code of how this was achieved.
+
+import pandas as pd
+
+data1 = pd.read_csv('BCG.csv')
+data2 = pd.read_csv('DTP3.csv')
+data3 = pd.read_csv('HepB3.csv')
+data5 = pd.read_csv('Hib3.csv')
+data6 = pd.read_csv('MCV1.csv')
+data7 = pd.read_csv('MCV2.csv')
+data8 = pd.read_csv('PAB.csv')
+data9 = pd.read_csv('PCV3.csv')
+data10 = pd.read_csv('Pol3.csv')
+data11 = pd.read_csv('RotaC.csv')
+
+data_frames = [data1, data2, data3, data5, data6, data7, data8, data9, data10, data11]
+
+output = pd.concat(data_frames)
+output.to_csv('Vaccination_Drive.csv')

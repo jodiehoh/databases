@@ -1,0 +1,155 @@
+Continent,CountryName,Government,CountryCode,Region,IncomeGroup,CountryID
+Africa,Algeria,Republic,DZA,Middle East & North Africa,Lower middle income,DZ
+Africa,Angola,Republic,AGO,Sub-Saharan Africa,Lower middle income,AO
+Africa,Benin,Republic,BEN,Sub-Saharan Africa,Lower middle income,BJ
+Africa,Botswana,Republic,BWA,Sub-Saharan Africa,Upper middle income,BW
+Africa,Burundi,Republic,BDI,Sub-Saharan Africa,Low income,BI
+Africa,Cameroon,Republic,CMR,Sub-Saharan Africa,Lower middle income,CM
+Africa,Central African Republic,Republic,CAF,Sub-Saharan Africa,Low income,CF
+Africa,Chad,Republic,TCD,Sub-Saharan Africa,Low income,TD
+Africa,Comoros,Republic,COM,Sub-Saharan Africa,Lower middle income,KM
+Africa,Djibouti,Republic,DJI,Middle East & North Africa,Lower middle income,DJ
+Africa,Equatorial Guinea,Republic,GNQ,Sub-Saharan Africa,Upper middle income,GQ
+Africa,Eritrea,Republic,ERI,Sub-Saharan Africa,Low income,ER
+Africa,Ethiopia,Republic,ETH,Sub-Saharan Africa,Low income,ET
+Africa,Gabon,Republic,GAB,Sub-Saharan Africa,Upper middle income,GA
+Africa,Ghana,Republic,GHA,Sub-Saharan Africa,Lower middle income,GH
+Africa,Guinea,Republic,GIN,Sub-Saharan Africa,Low income,GN
+Africa,Guinea-Bissau,Republic,GNB,Sub-Saharan Africa,Low income,GW
+Africa,Kenya,Republic,KEN,Sub-Saharan Africa,Lower middle income,KE
+Africa,Lesotho,Constitutional Monarchy,LSO,Sub-Saharan Africa,Lower middle income,LS
+Africa,Liberia,Republic,LBR,Sub-Saharan Africa,Low income,LR
+Africa,Madagascar,Republic,MDG,Sub-Saharan Africa,Low income,MG
+Africa,Malawi,Republic,MWI,Sub-Saharan Africa,Low income,MW
+Africa,Mali,Provisional,MLI,Sub-Saharan Africa,Low income,ML
+Africa,Mauritania,Republic,MRT,Sub-Saharan Africa,Lower middle income,MR
+Africa,Mauritius,Republic,MUS,Sub-Saharan Africa,High income,MU
+Africa,Morocco,Constitutional Monarchy,MAR,Middle East & North Africa,Lower middle income,MA
+Africa,Mozambique,Republic,MOZ,Sub-Saharan Africa,Low income,MZ
+Africa,Niger,Republic,NER,Sub-Saharan Africa,Low income,NE
+Africa,Nigeria,Republic,NGA,Sub-Saharan Africa,Lower middle income,NG
+Africa,Rwanda,Republic,RWA,Sub-Saharan Africa,Low income,RW
+Africa,Senegal,Absolute Monarchy,SEN,Sub-Saharan Africa,Lower middle income,SN
+Africa,Seychelles,Republic,SYC,Sub-Saharan Africa,High income,SC
+Africa,Sierra Leone,Republic,SLE,Sub-Saharan Africa,Low income,SL
+Africa,Somalia,Republic,SOM,Sub-Saharan Africa,Low income,SO
+Africa,South Africa,Republic,ZAF,Sub-Saharan Africa,Upper middle income,ZA
+Africa,Sudan,Provisional,SDN,Sub-Saharan Africa,Low income,SD
+Africa,Tanzania,Republic,TZA,Sub-Saharan Africa,Lower middle income,TZ
+Africa,Togo,Republic,TGO,Sub-Saharan Africa,Low income,TG
+Africa,Tunisia,Republic,TUN,Middle East & North Africa,Lower middle income,TN
+Africa,Uganda,Republic,UGA,Sub-Saharan Africa,Low income,UG
+Africa,Zambia,Republic,ZMB,Sub-Saharan Africa,Lower middle income,ZM
+Africa,Zimbabwe,Republic,ZWE,Sub-Saharan Africa,Lower middle income,ZW
+Asia,Afghanistan,Republic,AFG,South Asia,Low income,AF
+Asia,Bahrain,Republic,BHR,Middle East & North Africa,High income,BH
+Asia,Bangladesh,Constitutional Monarchy,BGD,South Asia,Lower middle income,BD
+Asia,Bhutan,Constitutional Monarchy,BTN,South Asia,Lower middle income,BT
+Asia,Cambodia,Constitutional Monarchy,KHM,East Asia & Pacific,Lower middle income,KH
+Asia,China,Republic,CHN,East Asia & Pacific,Upper middle income,CN
+Asia,India,Republic,IND,South Asia,Lower middle income,IN
+Asia,Indonesia,Republic,IDN,East Asia & Pacific,Upper middle income,ID
+Asia,Iraq,Republic,IRQ,Middle East & North Africa,Upper middle income,IQ
+Asia,Israel,Republic,ISR,Middle East & North Africa,High income,IL
+Asia,Japan,Constitutional Monarchy,JPN,East Asia & Pacific,High income,JP
+Asia,Jordan,Constitutional Monarchy,JOR,Middle East & North Africa,Upper middle income,JO
+Asia,Kazakhstan,Republic,KAZ,Europe & Central Asia,Upper middle income,KZ
+Asia,Kuwait,Constitutional Monarchy,KWT,Middle East & North Africa,High income,KW
+Asia,Lebanon,Republic,LBN,Middle East & North Africa,Upper middle income,LB
+Asia,Malaysia,Republic,MYS,East Asia & Pacific,Upper middle income,MY
+Asia,Maldives,Republic,MDV,South Asia,Upper middle income,MV
+Asia,Mongolia,Republic,MNG,East Asia & Pacific,Lower middle income,MN
+Asia,Nepal,Republic,NPL,South Asia,Lower middle income,NP
+Asia,Oman,Absolute Monarchy,OMN,Middle East & North Africa,High income,OM
+Asia,Pakistan,Republic,PAK,South Asia,Lower middle income,PK
+Asia,Philippines,Republic,PHL,East Asia & Pacific,Lower middle income,PH
+Asia,Qatar,Absolute Monarchy,QAT,Middle East & North Africa,High income,QA
+Asia,Saudi Arabia,Republic,SAU,Middle East & North Africa,High income,SA
+Asia,Singapore,Republic,SGP,East Asia & Pacific,High income,SG
+Asia,Sri Lanka,Republic,LKA,South Asia,Lower middle income,LK
+Asia,Tajikistan,Republic,TJK,Europe & Central Asia,Low income,TJ
+Asia,Thailand,Constitutional Monarchy,THA,East Asia & Pacific,Upper middle income,TH
+Asia,Turkey,Republic,TUR,Europe & Central Asia,Upper middle income,TR
+Asia,Turkmenistan,Republic,TKM,Europe & Central Asia,Upper middle income,TM
+Asia,United Arab Emirates,Constitutional Monarchy,ARE,Middle East & North Africa,High income,AE
+Asia,Uzbekistan,Republic,UZB,Europe & Central Asia,Lower middle income,UZ
+Asia,Vietnam,Republic,VNM,East Asia & Pacific,Lower middle income,VN
+Europe,Albania,Republic,ALB,Europe & Central Asia,Upper middle income,AL
+Europe,Andorra,Constitutional Monarchy,AND,Europe & Central Asia,High income,AD
+Europe,Armenia,Constitutional Monarchy,ARM,Europe & Central Asia,Upper middle income,AM
+Europe,Austria,Republic,AUT,Europe & Central Asia,High income,AT
+Europe,Azerbaijan,Republic,AZE,Europe & Central Asia,Upper middle income,AZ
+Europe,Belarus,Republic,BLR,Europe & Central Asia,Upper middle income,BY
+Europe,Belgium,Constitutional Monarchy,BEL,Europe & Central Asia,High income,BE
+Europe,Bosnia and Herzegovina,Republic,BIH,Europe & Central Asia,Upper middle income,BA
+Europe,Bulgaria,Republic,BGR,Europe & Central Asia,Upper middle income,BG
+Europe,Croatia,Republic,HRV,Europe & Central Asia,High income,HR
+Europe,Cyprus,Republic,CYP,Europe & Central Asia,High income,CY
+Europe,Denmark,Constitutional Monarchy,DNK,Europe & Central Asia,High income,DK
+Europe,Estonia,Republic,EST,Europe & Central Asia,High income,EE
+Europe,Finland,Republic,FIN,Europe & Central Asia,High income,FI
+Europe,France,Republic,FRA,Europe & Central Asia,High income,GF
+Europe,France,Republic,FRA,Europe & Central Asia,High income,FR
+Europe,Georgia,Republic,GEO,Europe & Central Asia,Upper middle income,GE
+Europe,Germany,Republic,DEU,Europe & Central Asia,High income,DE
+Europe,Greece,Republic,GRC,Europe & Central Asia,High income,GR
+Europe,Hungary,Republic,HUN,Europe & Central Asia,High income,HU
+Europe,Iceland,Republic,ISL,Europe & Central Asia,High income,IS
+Europe,Ireland,Republic,IRL,Europe & Central Asia,High income,IE
+Europe,Italy,Republic,ITA,Europe & Central Asia,High income,IT
+Europe,Latvia,Republic,LVA,Europe & Central Asia,High income,LV
+Europe,Lithuania,Republic,LTU,Europe & Central Asia,High income,LT
+Europe,Luxembourg,Constitutional Monarchy,LUX,Europe & Central Asia,High income,LU
+Europe,Malta,Republic,MLT,Middle East & North Africa,High income,MT
+Europe,Moldova,Republic,MDA,Europe & Central Asia,Lower middle income,MD
+Europe,Montenegro,Republic,MNE,Europe & Central Asia,Upper middle income,ME
+Europe,Netherlands,Constitutional Monarchy,NLD,Europe & Central Asia,High income,NL
+Europe,Norway,Constitutional Monarchy,NOR,Europe & Central Asia,High income,NO
+Europe,Poland,Republic,POL,Europe & Central Asia,High income,PL
+Europe,Portugal,Republic,PRT,Europe & Central Asia,High income,PT
+Europe,Romania,Republic,ROU,Europe & Central Asia,High income,RO
+Europe,Serbia,Republic,SRB,Europe & Central Asia,Upper middle income,RS
+Europe,Slovenia,Republic,SVN,Europe & Central Asia,High income,SI
+Europe,Spain,Constitutional Monarchy,ESP,Europe & Central Asia,High income,ES
+Europe,Sweden,Constitutional Monarchy,SWE,Europe & Central Asia,High income,SE
+Europe,Switzerland,Republic,CHE,Europe & Central Asia,High income,CH
+Europe,Ukraine,Republic,UKR,Europe & Central Asia,Lower middle income,UA
+Europe,United Kingdom,Constitutional Monarchy,GBR,Europe & Central Asia,High income,GB
+North America,Antigua and Barbuda,Constitutional Monarchy,ATG,Latin America & Caribbean,High income,AG
+North America,Barbados,Constitutional Monarchy,BRB,Latin America & Caribbean,High income,BB
+North America,Belize,Constitutional Monarchy,BLZ,Latin America & Caribbean,Upper middle income,BZ
+North America,Canada,Constitutional Monarchy,CAN,North America,High income,CA
+North America,Costa Rica,Republic,CRI,Latin America & Caribbean,Upper middle income,CR
+North America,Cuba,Republic,CUB,Latin America & Caribbean,Upper middle income,CU
+North America,Dominica,Republic,DMA,Latin America & Caribbean,Upper middle income,DM
+North America,Dominican Republic,Republic,DOM,Latin America & Caribbean,Upper middle income,DO
+North America,El Salvador,Republic,SLV,Latin America & Caribbean,Lower middle income,SV
+North America,Grenada,Constitutional Monarchy,GRD,Latin America & Caribbean,Upper middle income,GD
+North America,Guatemala,Republic,GTM,Latin America & Caribbean,Upper middle income,GT
+North America,Haiti,Republic,HTI,Latin America & Caribbean,Low income,HT
+North America,Honduras,Republic,HND,Latin America & Caribbean,Lower middle income,HN
+North America,Jamaica,Constitutional Monarchy,JAM,Latin America & Caribbean,Upper middle income,JM
+North America,Mexico,Republic,MEX,Latin America & Caribbean,Upper middle income,MX
+North America,Nicaragua,Republic,NIC,Latin America & Caribbean,Lower middle income,NI
+North America,Panama,Republic,PAN,Latin America & Caribbean,High income,PA
+North America,Trinidad and Tobago,Republic,TTO,Latin America & Caribbean,High income,TT
+Oceania,Australia,Republic,AUS,East Asia & Pacific,High income,AU
+Oceania,Fiji,Republic,FJI,East Asia & Pacific,Upper middle income,FJ
+Oceania,Nauru,Republic,NRU,East Asia & Pacific,High income,NR
+Oceania,New Zealand,Constitutional Monarchy,NZL,East Asia & Pacific,High income,NZ
+Oceania,Papua New Guinea,Constitutional Monarchy,PNG,East Asia & Pacific,Lower middle income,PG
+Oceania,Solomon Islands,Constitutional Monarchy,SLB,East Asia & Pacific,Lower middle income,SB
+Oceania,Tonga,Constitutional Monarchy,TON,East Asia & Pacific,Upper middle income,TO
+Oceania,Vanuatu,Republic,VUT,East Asia & Pacific,Lower middle income,VU
+South America,Argentina,Republic,ARG,Latin America & Caribbean,Upper middle income,AR
+South America,Bolivia,Republic,BOL,Latin America & Caribbean,Lower middle income,BO
+South America,Brazil,Republic,BRA,Latin America & Caribbean,Upper middle income,BR
+South America,Chile,Republic,CHL,Latin America & Caribbean,High income,CL
+South America,Colombia,Republic,COL,Latin America & Caribbean,Upper middle income,CO
+South America,Ecuador,Republic,ECU,Latin America & Caribbean,Upper middle income,EC
+South America,Guyana,Republic,GUY,Latin America & Caribbean,Upper middle income,GY
+South America,Paraguay,Republic,PRY,Latin America & Caribbean,Upper middle income,PY
+South America,Peru,Republic,PER,Latin America & Caribbean,Upper middle income,PE
+South America,Suriname,Republic,SUR,Latin America & Caribbean,Upper middle income,SR
+South America,Uruguay,Republic,URY,Latin America & Caribbean,High income,UY
+North America,United States of America,Republic,USA,North America,High income,US
