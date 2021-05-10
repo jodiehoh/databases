@@ -93,7 +93,7 @@ if (empty($country)) {
 	           $rows = array();
             //Report result set by visiting each row in it
             while ($row = $result->fetch_row()) {
-               $rows[] = $row;
+               $rows[$row[0]] = $row[3];
             } 
 
             print json_encode($rows);
