@@ -47,21 +47,29 @@ if (empty($country)) {
          if ($result->num_rows == 0) {
 
             //Result contains no rows at all
-            echo "No population history for this country";
+            echo "No vaccination history for this country";
 
          } else {
+               $vaccine_data = new \Ds\Map();
             //Report result set by visiting each row in it
                while ($row = $result->fetch_row()) {
+
                   $obj = NULL;
-                  $ratio = NULL;
 
                   $obj->x = $row[0];
-                  $obj->y = $row[3];
-
+                  $obj->y = $row[2];
 
                   $json = $obj;
-                  array_push($rows, $json);
-                  array_push($ratios, $ratio_json);
+
+                  if ($vaccine_data->hasKey($row[1])) {
+                     $temp = $vaccine_data->get($row[1]);
+
+                     array_push($temp, $json)
+                     $vaccine_data[$row[1]]->put($temp);
+                  }
+                  else {
+                     $vaccine_data[$row[1]]->put($json);
+                  }
                } 
          }	 
 
@@ -94,7 +102,119 @@ $conn->close();
 ?>
 
 <script>
+window.onload = function () {
 
+var chart = new CanvasJS.Chart("chartContainer", {
+   animationEnabled: true,
+   title:{
+      text: "Evening Sales in a Restaurant"
+   },
+   axisX: {
+      valueFormatString: "DDD"
+   },
+   axisY: {
+      prefix: "$"
+   },
+   toolTip: {
+      shared: true
+   },
+   legend:{
+      cursor: "pointer",
+      itemclick: toggleDataSeries
+   },
+   data: [
+   {
+      type: "stackedBar",
+      name: "BCG",
+      showInLegend: "true",
+      xValueFormatString: "####",
+      yValueFormatString: "###",
+      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+   },
+   {
+      type: "stackedBar",
+      name: "MCV1",
+      showInLegend: "true",
+      xValueFormatString: "####",
+      yValueFormatString: "###",
+      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+   },
+   {
+      type: "stackedBar",
+      name: "Pol3",
+      showInLegend: "true",
+      xValueFormatString: "####",
+      yValueFormatString: "###",
+      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+   },
+   {
+      type: "stackedBar",
+      name: "BCG",
+      showInLegend: "true",
+      xValueFormatString: "####",
+      yValueFormatString: "###",
+      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+   },
+   {
+      type: "stackedBar",
+      name: "DTP3",
+      showInLegend: "true",
+      xValueFormatString: "####",
+      yValueFormatString: "###",
+      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+   },
+   {
+      type: "stackedBar",
+      name: "RotaC",
+      showInLegend: "true",
+      xValueFormatString: "####",
+      yValueFormatString: "###",
+      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+   },
+   {
+      type: "stackedBar",
+      name: "Hib3",
+      showInLegend: "true",
+      xValueFormatString: "####",
+      yValueFormatString: "###",
+      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+   },
+   {
+      type: "stackedBar",
+      name: "PAB",
+      showInLegend: "true",
+      xValueFormatString: "####",
+      yValueFormatString: "###",
+      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+   },
+   {
+      type: "stackedBar",
+      name: "HepB3",
+      showInLegend: "true",
+      xValueFormatString: "####",
+      yValueFormatString: "###",
+      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+   },
+   {
+      type: "stackedBar",
+      name: "PCV3",
+      showInLegend: "true",
+      xValueFormatString: "####",
+      yValueFormatString: "###",
+      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+   }]
+});
+chart.render();
+
+function toggleDataSeries(e) {
+   if(typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+      e.dataSeries.visible = false;
+   }
+   else {
+      e.dataSeries.visible = true;
+   }
+   chart.render();
+}
 
 </script>
 
