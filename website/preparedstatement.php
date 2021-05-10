@@ -1,8 +1,6 @@
 
-<head><title>Population History</title></head>
+<head><title>PHP PreparedStatement example</title></head>
 <body>
-
-
 
 <?php
 include 'open.php';
@@ -12,33 +10,30 @@ include 'open.php';
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
 
-if (isset($_POST['country'])) {
-    $country = $_POST['country'];
-}
-
 //Collect the posted value in a variable called $item
-$country = $_POST['country'];
+$item = $_POST['item'];
 
-echo "<h2>Population History </h2>";
+echo "<h2>Bid History</h2>";
+echo "Item number: ";
 
 //Determine if any input was actually collected
-if (empty($country)) {
+if (empty($item)) {
    echo "empty <br><br>";
 
 } else {
 
-   echo "<h3>".$country."</h3></br>";
+   echo $item."<br><br>";
 
    //Prepare a statement that we can later execute. The ?'s are placeholders for
    //parameters whose values we will set before we run the query.
-   if ($stmt = $conn->prepare("CALL PopulationHistory(?)")) {
+   if ($stmt = $conn->prepare("CALL ShowBidHistory(?)")) {
 
       //Attach the ? in prepared statements to variables (even if those variables
       //don't hold the values we want yet).  First parameter is a list of types of
       //the variables that follow: 's' means string, 'i' means integer, 'd' means
       //double. E.g., for a statment with 3 ?'s, where middle parameter is an integer
       //and the other two are strings, the first argument included should be "sis".
-      $stmt->bind_param("s", $country);
+      $stmt->bind_param("s", $item);
 
       //Run the actual query
       if ($stmt->execute()) {
@@ -49,22 +44,24 @@ if (empty($country)) {
          if ($result->num_rows == 0) {
 
             //Result contains no rows at all
-            echo "No population history for this country";
+            echo "No bids found for the specified item";
 
          } else {
 	 
             //Create table to display results
             echo "<table border=\"1px solid black\">";
-            echo "<tr><th> Year </th> <th> Female to Male Ratio </th> <th> Total Population Count </th></tr>";
+            echo "<tr><th> buyerNum </th> <th> bidTime </th> <th> amount </th></tr>";
 
             //Report result set by visiting each row in it
             while ($row = $result->fetch_row()) {
                echo "<tr>";
                echo "<td>".$row[0]."</td>";
+               echo "<td>".$row[1]."</td>";
                echo "<td>".$row[2]."</td>";
-               echo "<td>".$row[3]."</td>";
                echo "</tr>";
             } 
+         
+	 
             echo "</table>";
          }	 
 

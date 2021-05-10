@@ -10,7 +10,7 @@ BEGIN
 	IF EXISTS(SELECT C.CountryName, C.PopulationFemale / C.PopulationMale, PopulationTotal
 		      FROM CountryInfo As C 
 		      WHERE C.CountryName = country) THEN	       
-		SELECT C.CountryName, C.PopulationFemale / C.PopulationMale, PopulationTotal
+		SELECT C.Yr, C.CountryName, C.PopulationFemale / C.PopulationMale, PopulationTotal
 		FROM CountryInfo As C 
 		WHERE C.CountryName = country;
 	END IF;
