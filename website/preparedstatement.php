@@ -1,48 +1,7 @@
 
-<head>
-   <title>Population History</title>
-   <script>
-
-   var chart = null;
-   var dataPoints = [];
-
-   window.onload = function() {
-
-   chart = new CanvasJS.Chart("chartContainer", {
-      animationEnabled: true,
-      theme: "light2",
-      title: {
-         text: "Total Population"
-      },
-      axisY: {
-         title: "Population",
-         titleFontSize: 24
-      },
-      data: [{
-         type: "column",
-         dataPoints: <?php echo json_encode($rows) ?>;
-      }]
-   });
-
-
-   $.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales.json?callback=?", callback);   
-
-   }
-
-   function callback(data) {  
-      for (var i = 0; i < data.dps.length; i++) {
-         dataPoints.push({
-            x: new Date(data.dps[i].date),
-            y: data.dps[i].units
-         });
-      }
-      chart.render(); 
-   }
-   </script>
-
-</head>
+<head><title>PHP PreparedStatement example</title></head>
 <body>
-<link rel="stylesheet" href="assets/css/main.css" />
+
 <?php
 include 'open.php';
 
@@ -51,31 +10,30 @@ include 'open.php';
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
 
-if (isset($_POST['country'])) {
-    $country = $_POST['country'];
-}
+//Collect the posted value in a variable called $item
+$item = $_POST['item'];
 
-
-echo "<h2>Population History </h2>";
+echo "<h2>Bid History</h2>";
+echo "Item number: ";
 
 //Determine if any input was actually collected
-if (empty($country)) {
+if (empty($item)) {
    echo "empty <br><br>";
 
 } else {
 
-   echo "<h3>".$country."</h3></br>";
+   echo $item."<br><br>";
 
    //Prepare a statement that we can later execute. The ?'s are placeholders for
    //parameters whose values we will set before we run the query.
-   if ($stmt = $conn->prepare("CALL PopulationHistory(?)")) {
+   if ($stmt = $conn->prepare("CALL ShowBidHistory(?)")) {
 
       //Attach the ? in prepared statements to variables (even if those variables
       //don't hold the values we want yet).  First parameter is a list of types of
       //the variables that follow: 's' means string, 'i' means integer, 'd' means
       //double. E.g., for a statment with 3 ?'s, where middle parameter is an integer
       //and the other two are strings, the first argument included should be "sis".
-      $stmt->bind_param("s", $country);
+      $stmt->bind_param("s", $item);
 
       //Run the actual query
       if ($stmt->execute()) {
@@ -86,16 +44,25 @@ if (empty($country)) {
          if ($result->num_rows == 0) {
 
             //Result contains no rows at all
-            echo "No population history for this country";
+            echo "No bids found for the specified item";
 
          } else {
-	           $rows = array();
+	 
+            //Create table to display results
+            echo "<table border=\"1px solid black\">";
+            echo "<tr><th> buyerNum </th> <th> bidTime </th> <th> amount </th></tr>";
+
             //Report result set by visiting each row in it
             while ($row = $result->fetch_row()) {
-               $rows[$row[0]] = $row[3];
+               echo "<tr>";
+               echo "<td>".$row[0]."</td>";
+               echo "<td>".$row[1]."</td>";
+               echo "<td>".$row[2]."</td>";
+               echo "</tr>";
             } 
-
-            print json_encode($rows);
+         
+	 
+            echo "</table>";
          }	 
 
          //We are done with the result set returned above, so free it
@@ -125,8 +92,4 @@ if (empty($country)) {
 //Close the connection created in open.php
 $conn->close();
 ?>
-
-<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
-<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script src="assets/js/canvasjs.min.js"></script>
 </body>
