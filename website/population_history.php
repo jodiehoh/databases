@@ -14,8 +14,6 @@ if (isset($_POST['country'])) {
     $country = $_POST['country'];
 }
 
-//Collect the posted value in a variable called $item
-$country = $_POST['country'];
 
 echo "<h2>Bid History</h2>";
 echo "Item number: ";
