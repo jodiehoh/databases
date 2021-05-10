@@ -24,8 +24,8 @@ if (isset($_POST['year'])) {
 echo "<h2 style=\"text-align:center\">Gender Distribution </h2>";
 
 //Determine if any input was actually collected
-if (empty($conti) and empty($year)) {
-   echo "Empty Continent and Year <br><br>";
+if (empty($conti) or empty($year)) {
+   echo "Empty Continent or Year <br><br>";
 
 } else {
 
@@ -1269,7 +1269,7 @@ var simplemaps_worldmap_mapdata={
   },
   data: {
     data: {
-      <?php echo json_encode($rows) ?>
+      
     }
   }
 };
