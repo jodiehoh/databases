@@ -1,5 +1,5 @@
-/* 7. What is the complete population history for China? 
-      List the Country Name, female to male , total population and the population density. */
+//* 3. List all government types and the percentage of their population 
+       that suffered from Measles in 1994. */
 
 DELIMITER //
 
