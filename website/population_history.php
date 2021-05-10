@@ -1,7 +1,7 @@
 
 <head><title>Population History </title></head>
 <body>
-
+<link rel="stylesheet" href="assets/css/main.css" />
 <?php
 include 'open.php';
 
