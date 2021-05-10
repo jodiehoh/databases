@@ -16,27 +16,32 @@ if (isset($_POST['conti'])) {
     $conti = $_POST['conti'];
 }
 
+if (isset($_POST['year'])) {
+    $year = $_POST['year'];
+}
 
-echo "<h2 style=\"text-align:center\">Population History </h2>";
+
+echo "<h2 style=\"text-align:center\">Gender Distribution </h2>";
 
 //Determine if any input was actually collected
-if (empty($conti)) {
-   echo "empty <br><br>";
+if (empty($conti) and empty($year)) {
+   echo "Empty Continent and Year <br><br>";
 
 } else {
 
    echo "<h3 style=\"text-align:center\">".$conti."</h3></br>";
+   echo "<h3 style=\"text-align:center\">".$year."</h3></br>";
 
    //Prepare a statement that we can later execute. The ?'s are placeholders for
    //parameters whose values we will set before we run the query.
-   if ($stmt = $conn->prepare("CALL PopulationHistory(?)")) {
+   if ($stmt = $conn->prepare("CALL GenderDistribution(?)")) {
 
       //Attach the ? in prepared statements to variables (even if those variables
       //don't hold the values we want yet).  First parameter is a list of types of
       //the variables that follow: 's' means string, 'i' means integer, 'd' means
       //double. E.g., for a statment with 3 ?'s, where middle parameter is an integer
       //and the other two are strings, the first argument included should be "sis".
-      $stmt->bind_param("s", $conti);
+      $stmt->bind_param("si", $conti, $year);
 
       //Run the actual query
       if ($stmt->execute()) {
@@ -47,7 +52,7 @@ if (empty($conti)) {
          if ($result->num_rows == 0) {
 
             //Result contains no rows at all
-            echo "No population history for this country";
+            echo "No gender distribution for this country";
 
          } else {
 	           $rows = array();
