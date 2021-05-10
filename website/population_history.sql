@@ -9,7 +9,7 @@ CREATE PROCEDURE PopulationHistory(IN country VARCHAR(255))
 BEGIN
 	IF EXISTS(SELECT C.CountryName, C.PopulationFemale / C.PopulationMale, PopulationTotal
 		      FROM CountryInfo As C 
-		      WHERE C.CountryName = country;) THEN	       
+		      WHERE C.CountryName = country) THEN	       
 		SELECT C.CountryName, C.PopulationFemale / C.PopulationMale, PopulationTotal
 		FROM CountryInfo As C 
 		WHERE C.CountryName = country;

@@ -10,8 +10,12 @@ include 'open.php';
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
 
+if (isset($_POST['country'])) {
+    $country = $_POST['country'];
+}
+
 //Collect the posted value in a variable called $item
-$country = $_POST['name'];
+$country = $_POST['country'];
 
 echo "<h2>Bid History</h2>";
 echo "Item number: ";
