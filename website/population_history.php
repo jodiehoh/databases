@@ -90,20 +90,13 @@ if (empty($country)) {
             echo "No population history for this country";
 
          } else {
-	 
-            //Create table to display results
-            echo "<table border=\"1px solid black\">";
-            echo "<tr><th> Year </th> <th> Female to Male Ratio </th> <th> Total Population Count </th></tr>";
-
+	           $rows = array();
             //Report result set by visiting each row in it
             while ($row = $result->fetch_row()) {
-               echo "<tr>";
-               echo "<td>".$row[0]."</td>";
-               echo "<td>".$row[2]."</td>";
-               echo "<td>".$row[3]."</td>";
-               echo "</tr>";
+               $rows[] = $row;
             } 
-            echo "</table>";
+
+            print json_encode($rows);
          }	 
 
          //We are done with the result set returned above, so free it
