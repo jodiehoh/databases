@@ -53,7 +53,11 @@ if (empty($country)) {
 	           $rows = array();
             //Report result set by visiting each row in it
             while ($row = $result->fetch_row()) {
-               $rows[$row[0]] = $row[3];
+                  $obj->x = $row[0];
+                  $obj->y = $row[3];
+
+                  $json = json_encode($obj);
+                  array_push($rows, $json);
             } 
 
             echo json_encode($rows);
