@@ -1,8 +1,8 @@
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS InsertHasDisease //
+DROP PROCEDURE IF EXISTS InsertVaccinationDrive //
 
-CREATE PROCEDURE InsertHasDisease(IN cntry VARCHAR(30),
+CREATE PROCEDURE InsertVaccinationDrive(IN cntry VARCHAR(30),
 	IN vaccName VARCHAR(30), 
 	IN yer INT,
 	IN numDoses INT)
