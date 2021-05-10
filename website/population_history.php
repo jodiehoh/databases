@@ -1,5 +1,47 @@
 
-<head><title>Population History</title></head>
+<head>
+   <title>Population History</title>
+   <script>
+
+   var chart = null;
+   var dataPoints = [];
+
+   window.onload = function() {
+
+   chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      theme: "light2",
+      title: {
+         text: "Daily Sales Data"
+      },
+      axisY: {
+         title: "Units",
+         titleFontSize: 24
+      },
+      data: [{
+         type: "column",
+         yValueFormatString: "#,### Units",
+         dataPoints: dataPoints
+      }]
+   });
+
+
+   $.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales.json?callback=?", callback);   
+
+   }
+
+   function callback(data) {  
+      for (var i = 0; i < data.dps.length; i++) {
+         dataPoints.push({
+            x: new Date(data.dps[i].date),
+            y: data.dps[i].units
+         });
+      }
+      chart.render(); 
+   }
+   </script>
+
+</head>
 <body>
 <link rel="stylesheet" href="assets/css/main.css" />
 <?php
@@ -91,4 +133,8 @@ if (empty($country)) {
 //Close the connection created in open.php
 $conn->close();
 ?>
+
+<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="../../canvasjs.min.js"></script>
 </body>
