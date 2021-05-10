@@ -17,7 +17,7 @@ if (isset($_POST['country'])) {
 }
 
 
-echo "<h2>Population History </h2>";
+echo "<h2 style="text-align:center">Population History </h2>";
 
 //Determine if any input was actually collected
 if (empty($country)) {
@@ -25,7 +25,7 @@ if (empty($country)) {
 
 } else {
 
-   echo "<h3>".$country."</h3></br>";
+   echo "<h3 style="text-align:center">".$country."</h3></br>";
 
    //Prepare a statement that we can later execute. The ?'s are placeholders for
    //parameters whose values we will set before we run the query.
@@ -51,15 +51,23 @@ if (empty($country)) {
 
          } else {
 	           $rows = array();
+              $ratios = array();
             //Report result set by visiting each row in it
-		  while ($row = $result->fetch_row()) {
-		  $obj = NULL;
+               while ($row = $result->fetch_row()) {
+                  $obj = NULL;
+                  $ratio = NULL;
+
                   $obj->x = $row[0];
                   $obj->y = $row[3];
 
+                  $ratio->x = $row[0];
+                  $ratio->y = $row[2];
+
                   $json = $obj;
-		  array_push($rows, $json);
-		  } 
+                  $ratio_json = $ratio;
+                  array_push($rows, $json);
+                  array_push($ratios, $ratio_json);
+               } 
          }	 
 
          //We are done with the result set returned above, so free it
@@ -95,6 +103,9 @@ $conn->close();
    var chart = null;
    var dataPoints = [];
 
+   var ratio_chart = null;
+   var dataPoints = [];
+
    window.onload = function() {
 
    chart = new CanvasJS.Chart("chartContainer", {
@@ -104,9 +115,9 @@ $conn->close();
          text: "Total Population"
    },
 	   axisX: {
-	   valueFormatString: "####",
-   	title: "Year",
-	titleFontSize: 24
+	     valueFormatString: "####",
+   	  title: "Year",
+	     titleFontSize: 24
    },
       axisY: {
          title: "Population (thousands)",
@@ -116,7 +127,30 @@ $conn->close();
          type: "column",
          dataPoints: <?php echo json_encode($rows) ?>
       }]
+   }
+
+   ratio_chart = new CanvasJS.Chart("ratiochartContainer", {
+      animationEnabled: true,
+      theme: "light2",
+      title: {
+         text: "Female to Male Ratio"
+   },
+      axisX: {
+        valueFormatString: "####",
+        title: "Year",
+        titleFontSize: 24
+   },
+      axisY: {
+         valueFormatString:"##.##"
+         title: "Female to Male Ratio",
+         titleFontSize: 24
+      },
+      data: [{
+         type: "column",
+         dataPoints: <?php echo json_encode($ratios) ?>
+      }]
    });
+
 	$.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales.json?callback=?", callback);
    }
    function callback(data) {
@@ -127,11 +161,13 @@ $conn->close();
          });
       }
       chart.render();
+      ratio_chart.render();
    }
 
-   </script>
+</script>
 
 <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+<div id="ratiochartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="assets/js/canvasjs.min.js"></script>
 </body>
