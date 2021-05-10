@@ -17,7 +17,7 @@ if (isset($_POST['country'])) {
 }
 
 
-echo "<h2 style="text-align:center">Population History </h2>";
+echo "<h2 style=\"text-align:center\">Population History </h2>";
 
 //Determine if any input was actually collected
 if (empty($country)) {
@@ -25,7 +25,7 @@ if (empty($country)) {
 
 } else {
 
-   echo "<h3 style="text-align:center">".$country."</h3></br>";
+   echo "<h3 style=\"text-align:center\">".$country."</h3></br>";
 
    //Prepare a statement that we can later execute. The ?'s are placeholders for
    //parameters whose values we will set before we run the query.
@@ -61,7 +61,7 @@ if (empty($country)) {
                   $obj->y = $row[3];
 
                   $ratio->x = $row[0];
-                  $ratio->y = $row[2];
+                  $ratio->y =floatval( $row[2]);
 
                   $json = $obj;
                   $ratio_json = $ratio;
@@ -104,7 +104,6 @@ $conn->close();
    var dataPoints = [];
 
    var ratio_chart = null;
-   var dataPoints = [];
 
    window.onload = function() {
 
@@ -127,9 +126,9 @@ $conn->close();
          type: "column",
          dataPoints: <?php echo json_encode($rows) ?>
       }]
-   }
+   });
 
-   ratio_chart = new CanvasJS.Chart("ratiochartContainer", {
+    ratio_chart = new CanvasJS.Chart("ratiochartContainer", {
       animationEnabled: true,
       theme: "light2",
       title: {
@@ -141,7 +140,7 @@ $conn->close();
         titleFontSize: 24
    },
       axisY: {
-         valueFormatString:"##.##"
+         valueFormatString:"##.##",
          title: "Female to Male Ratio",
          titleFontSize: 24
       },
@@ -150,6 +149,7 @@ $conn->close();
          dataPoints: <?php echo json_encode($ratios) ?>
       }]
    });
+
 
 	$.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales.json?callback=?", callback);
    }
