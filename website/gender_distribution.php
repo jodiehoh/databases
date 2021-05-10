@@ -51,23 +51,16 @@ if (empty($conti)) {
 
          } else {
 	           $rows = array();
-              $ratios = array();
+
             //Report result set by visiting each row in it
                while ($row = $result->fetch_row()) {
-                  $obj = NULL;
-                  $ratio = NULL;
+                  $country = NULL;
+                  $country->[$row[0]] = $row[5];
 
-                  $obj->x = $row[0];
-                  $obj->y = $row[3];
-
-                  $ratio->x = $row[0];
-                  $ratio->y =floatval( $row[2]);
-
-                  $json = $obj;
-                  $ratio_json = $ratio;
-                  array_push($rows, $json);
-                  array_push($ratios, $ratio_json);
+                  $country_json = $country;
+                  array_push($rows, $country);
                } 
+               echo json_encode($rows);
          }	 
 
          //We are done with the result set returned above, so free it
@@ -112,7 +105,6 @@ var simplemaps_worldmap_mapdata={
     state_description: "State description",
     state_color: "#88A4BC",
     state_hover_color: "#3B729F",
-    state_url: "http://simplemaps.com",
     border_size: 1.5,
     all_states_inactive: "no",
     all_states_zoomable: "no",
@@ -125,7 +117,6 @@ var simplemaps_worldmap_mapdata={
     location_url: "",
     location_size: 25,
     location_type: "square",
-    location_image_source: "frog.png",
     location_border_color: "#FFFFFF",
     location_border: 2,
     location_hover_border: 2.5,
@@ -1029,13 +1020,7 @@ var simplemaps_worldmap_mapdata={
       description: " "
     }
   },
-  locations: {
-    paris: {
-      name: "Paris",
-      lat: "48.866666670",
-      lng: "2.333333333"
-    }
-  },
+  locations: {},
   labels: {},
   legend: {
     entries: []
@@ -1279,7 +1264,7 @@ var simplemaps_worldmap_mapdata={
   },
   data: {
     data: {
-      AO: "100"
+      <?php echo json_encode($rows) ?>
     }
   }
 };
