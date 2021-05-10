@@ -1,5 +1,5 @@
 
-<head><title>Population Hsitory </title></head>
+<head><title>Population History </title></head>
 <body>
 
 <?php
@@ -17,7 +17,7 @@ echo "<h2>Bid History</h2>";
 echo "Item number: ";
 
 //Determine if any input was actually collected
-if (empty($name)) {
+if (empty($country)) {
    echo "empty <br><br>";
 
 } else {
