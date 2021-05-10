@@ -9,8 +9,8 @@ include 'open.php';
 
 //Override the PHP configuration file to display all errors
 //This is useful during development but generally disabled before release
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', true);
+//ini_set('error_reporting', E_ALL);
+//ini_set('display_errors', true);
 
 if (isset($_POST['country'])) {
     $country = $_POST['country'];
@@ -52,15 +52,14 @@ if (empty($country)) {
          } else {
 	           $rows = array();
             //Report result set by visiting each row in it
-            while ($row = $result->fetch_row()) {
+		  while ($row = $result->fetch_row()) {
+		  $obj = NULL;
                   $obj->x = $row[0];
                   $obj->y = $row[3];
 
-                  $json = json_encode($obj);
-                  array_push($rows, $json);
-            } 
-
-            echo json_encode($rows);
+                  $json = $obj;
+		  array_push($rows, $json);
+		  } 
          }	 
 
          //We are done with the result set returned above, so free it
@@ -103,31 +102,33 @@ $conn->close();
       theme: "light2",
       title: {
          text: "Total Population"
-      },
+   },
+	   axisX: {
+	   valueFormatString: "####",
+   	title: "Year",
+	titleFontSize: 24
+   },
       axisY: {
-         title: "Population",
+         title: "Population (thousands)",
          titleFontSize: 24
       },
       data: [{
          type: "column",
-         dataPoints: <?php echo json_encode($rows) ?>;
+         dataPoints: <?php echo json_encode($rows) ?>
       }]
    });
-
-
-   $.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales.json?callback=?", callback);   
-
+	$.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales.json?callback=?", callback);
    }
-
-   function callback(data) {  
+   function callback(data) {
       for (var i = 0; i < data.dps.length; i++) {
          dataPoints.push({
             x: new Date(data.dps[i].date),
             y: data.dps[i].units
          });
       }
-      chart.render(); 
+      chart.render();
    }
+
    </script>
 
 <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
