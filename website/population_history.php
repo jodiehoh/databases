@@ -12,16 +12,15 @@
       animationEnabled: true,
       theme: "light2",
       title: {
-         text: "Daily Sales Data"
+         text: "Total Population"
       },
       axisY: {
-         title: "Units",
+         title: "Population",
          titleFontSize: 24
       },
       data: [{
          type: "column",
-         yValueFormatString: "#,### Units",
-         dataPoints: dataPoints
+         dataPoints: <?php echo json_encode($rows) ?>;
       }]
    });
 
