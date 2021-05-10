@@ -1,4 +1,3 @@
-
 <head>
    <title>Population History</title>
 </head>
