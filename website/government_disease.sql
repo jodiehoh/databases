@@ -1,4 +1,4 @@
-//* 3. List all government types and the percentage of their population 
+/* 3. List all government types and the percentage of their population 
        that suffered from Measles in 1994. */
 
 DELIMITER //
