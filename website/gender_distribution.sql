@@ -3,9 +3,9 @@
 
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS PopulationHistory //
+DROP PROCEDURE IF EXISTS GenderDistribution //
 
-CREATE PROCEDURE PopulationHistory(IN conti VARCHAR(255))
+CREATE PROCEDURE GenderDistribution(IN conti VARCHAR(255))
 BEGIN
 
 	SELECT C.CountryName, I.Yr, I.PopulationFemale, I.PopulationMale, I.PopulationFemale/I.PopulationMale AS "F:M Ratio"

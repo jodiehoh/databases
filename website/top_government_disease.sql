@@ -3,9 +3,9 @@
 
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS PopulationHistory //
+DROP PROCEDURE IF EXISTS TopGovernmentDisease //
 
-CREATE PROCEDURE PopulationHistory(IN govt VARCHAR(255), IN disease VARCHAR(30))
+CREATE PROCEDURE TopGovernmentDisease(IN govt VARCHAR(255), IN disease VARCHAR(30))
 BEGIN
 
 	SELECT C.CountryName, H.Cases
