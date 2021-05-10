@@ -1,11 +1,11 @@
-//* 3. List all government types and the percentage of their population 
+/* 3. List all government types and the percentage of their population 
        that suffered from Measles in 1994. */
 
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS PopulationHistory //
+DROP PROCEDURE IF EXISTS GovernmentDisease //
 
-CREATE PROCEDURE PopulationHistory(IN disease1 VARCHAR(30), IN year1 INT)
+CREATE PROCEDURE GovernmentDisease(IN disease1 VARCHAR(30), IN year1 INT)
 BEGIN	
 
 	SELECT C.Government, 100 * SUM(H.Cases) / SUM(I.PopulationTotal) AS "Population Percentage"

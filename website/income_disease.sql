@@ -1,22 +1,19 @@
-/* 8. Which country and year had the highest number of cases of a certain disease? 
-      Show the complete disease and case history for the associated country. */
+/* 9. Which countries are considered high income and have no cases of disease in the database? */
 
 DELIMITER //
 
 DROP PROCEDURE IF EXISTS IncomeDisease //
 
-CREATE PROCEDURE IncomeDisease()
+CREATE PROCEDURE IncomeDisease(IN incomeType VARCHAR(255))
 BEGIN
 	
-	WITH TopCases AS (
-        SELECT CountryName, DiseaseName, Yr, MAX (Cases) as TopCase
-		FROM HasDisease
-		GROUP BY CountryName
-		ORDER BY TopCase DESC
-		LIMIT 1)
-	SELECT H.CountryName, H.DiseaseName, H.Yr, H.Cases
-	FROM HasDisease AS H, TopCases AS T
-	WHERE H.CountryName = T.CountryName AND H.DiseaseName = T.DiseaseName;
+	WITH HighIncome AS (
+        SELECT CountryName
+        FROM Country
+        WHERE IncomeGroup = incomeType)
+	SELECT CountryName
+	FROM HighIncome
+	WHERE CountryName NOT IN (SELECT CountryName FROM HasDisease);
 
 END; //
 

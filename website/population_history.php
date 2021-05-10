@@ -1,9 +1,7 @@
 
 <head><title>Population History</title></head>
 <body>
-
-
-
+<link rel="stylesheet" href="assets/css/main.css" />
 <?php
 include 'open.php';
 
@@ -16,8 +14,6 @@ if (isset($_POST['country'])) {
     $country = $_POST['country'];
 }
 
-//Collect the posted value in a variable called $item
-$country = $_POST['country'];
 
 echo "<h2>Population History </h2>";
 
