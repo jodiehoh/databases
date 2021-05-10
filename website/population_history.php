@@ -9,15 +9,15 @@ include 'open.php';
 
 //Override the PHP configuration file to display all errors
 //This is useful during development but generally disabled before release
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', true);
+//ini_set('error_reporting', E_ALL);
+//ini_set('display_errors', true);
 
 if (isset($_POST['country'])) {
     $country = $_POST['country'];
 }
 
 
-echo "<h2>Population History </h2>";
+echo "<h2 style=\"text-align:center\">Population History </h2>";
 
 //Determine if any input was actually collected
 if (empty($country)) {
@@ -25,7 +25,7 @@ if (empty($country)) {
 
 } else {
 
-   echo "<h3>".$country."</h3></br>";
+   echo "<h3 style=\"text-align:center\">".$country."</h3></br>";
 
    //Prepare a statement that we can later execute. The ?'s are placeholders for
    //parameters whose values we will set before we run the query.
@@ -51,16 +51,23 @@ if (empty($country)) {
 
          } else {
 	           $rows = array();
+              $ratios = array();
             //Report result set by visiting each row in it
-            while ($row = $result->fetch_row()) {
+               while ($row = $result->fetch_row()) {
+                  $obj = NULL;
+                  $ratio = NULL;
+
                   $obj->x = $row[0];
                   $obj->y = $row[3];
 
-                  $json = json_encode($obj);
-                  array_push($rows, $json);
-            } 
+                  $ratio->x = $row[0];
+                  $ratio->y =floatval( $row[2]);
 
-            echo json_encode($rows);
+                  $json = $obj;
+                  $ratio_json = $ratio;
+                  array_push($rows, $json);
+                  array_push($ratios, $ratio_json);
+               } 
          }	 
 
          //We are done with the result set returned above, so free it
@@ -96,6 +103,8 @@ $conn->close();
    var chart = null;
    var dataPoints = [];
 
+   var ratio_chart = null;
+
    window.onload = function() {
 
    chart = new CanvasJS.Chart("chartContainer", {
@@ -103,34 +112,62 @@ $conn->close();
       theme: "light2",
       title: {
          text: "Total Population"
-      },
+   },
+	   axisX: {
+	     valueFormatString: "####",
+   	  title: "Year",
+	     titleFontSize: 24
+   },
       axisY: {
-         title: "Population",
+         title: "Population (thousands)",
          titleFontSize: 24
       },
       data: [{
          type: "column",
-         dataPoints: <?php echo json_encode($rows) ?>;
+         dataPoints: <?php echo json_encode($rows) ?>
+      }]
+   });
+
+    ratio_chart = new CanvasJS.Chart("ratiochartContainer", {
+      animationEnabled: true,
+      theme: "light2",
+      title: {
+         text: "Female to Male Ratio"
+   },
+      axisX: {
+        valueFormatString: "####",
+        title: "Year",
+        titleFontSize: 24
+   },
+      axisY: {
+         valueFormatString:"##.##",
+         title: "Female to Male Ratio",
+         titleFontSize: 24
+      },
+      data: [{
+         type: "column",
+         dataPoints: <?php echo json_encode($ratios) ?>
       }]
    });
 
 
-   $.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales.json?callback=?", callback);   
-
+	$.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales.json?callback=?", callback);
    }
-
-   function callback(data) {  
+   function callback(data) {
       for (var i = 0; i < data.dps.length; i++) {
          dataPoints.push({
             x: new Date(data.dps[i].date),
             y: data.dps[i].units
          });
       }
-      chart.render(); 
+      chart.render();
+      ratio_chart.render();
    }
-   </script>
+
+</script>
 
 <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+<div id="ratiochartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="assets/js/canvasjs.min.js"></script>
 </body>
