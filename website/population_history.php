@@ -1,45 +1,6 @@
 
 <head>
    <title>Population History</title>
-   <script>
-
-   var chart = null;
-   var dataPoints = [];
-
-   window.onload = function() {
-
-   chart = new CanvasJS.Chart("chartContainer", {
-      animationEnabled: true,
-      theme: "light2",
-      title: {
-         text: "Total Population"
-      },
-      axisY: {
-         title: "Population",
-         titleFontSize: 24
-      },
-      data: [{
-         type: "column",
-         dataPoints: <?php echo json_encode($rows) ?>;
-      }]
-   });
-
-
-   $.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales.json?callback=?", callback);   
-
-   }
-
-   function callback(data) {  
-      for (var i = 0; i < data.dps.length; i++) {
-         dataPoints.push({
-            x: new Date(data.dps[i].date),
-            y: data.dps[i].units
-         });
-      }
-      chart.render(); 
-   }
-   </script>
-
 </head>
 <body>
 <link rel="stylesheet" href="assets/css/main.css" />
@@ -95,7 +56,7 @@ if (empty($country)) {
                $rows[$row[0]] = $row[3];
             } 
 
-            print json_encode($rows);
+            echo json_encode($rows);
          }	 
 
          //We are done with the result set returned above, so free it
@@ -125,6 +86,45 @@ if (empty($country)) {
 //Close the connection created in open.php
 $conn->close();
 ?>
+
+<script>
+
+   var chart = null;
+   var dataPoints = [];
+
+   window.onload = function() {
+
+   chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      theme: "light2",
+      title: {
+         text: "Total Population"
+      },
+      axisY: {
+         title: "Population",
+         titleFontSize: 24
+      },
+      data: [{
+         type: "column",
+         dataPoints: <?php echo json_encode($rows) ?>;
+      }]
+   });
+
+
+   $.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales.json?callback=?", callback);   
+
+   }
+
+   function callback(data) {  
+      for (var i = 0; i < data.dps.length; i++) {
+         dataPoints.push({
+            x: new Date(data.dps[i].date),
+            y: data.dps[i].units
+         });
+      }
+      chart.render(); 
+   }
+   </script>
 
 <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
