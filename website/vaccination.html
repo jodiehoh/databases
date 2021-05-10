@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+				<!-- Additional Elements -->
+					<section class="wrapper style1 align-center">
+						<div class="inner">
+							<h2>Vaccination Queries</h2>
+							<p>This page is dedicated to queries involving vaccination data (number of doses, recent doses vs. starting doses, etc). </p>
+							<div class="index align-left">
+
+								<!-- Text -->
+									<section>
+										<header>
+											<h3>Vaccine Count</h3>
+										</header>
+										<div class="content">
+											<p>Show all the countires in which they equal or exceed given vaccine count.</p>
+
+										</div>
+									</section>
+
+								<!-- Form -->
+									<section>
+										<header>
+											<h3>Vaccine Count Form</h3>
+										</header>
+										<div class="content">
+
+											<form method="post" action="population_history.php">
+												<div class="fields">
+													<div class="field">
+														<label for="count">Vaccine Count</label>
+														<input type="text" name="count" id="count" value="" />
+													</div>
+												</div>
+												<ul class="actions">
+													<li><input type="submit" name="submit" id="submit" value="Submit" /></li>
+												</ul>
+											</form>
+
+										</div>
+									</section>
+
+									<section>
+										<header>
+											<h3>Gender Distribution</h3>
+										</header>
+										<div class="content">
+											<p>Show which countries in a given continent had more females than males in a given time frame.</p>
+
+										</div>
+									</section>
+
+								<!-- Form -->
+									<section>
+										<header>
+											<h3>Gender Distribution Form</h3>
+										</header>
+										<div class="content">
+
+											<form method="post" action="gender_distribution.php">
+												<div class="fields">
+													<div class="field">
+														<label for = "name">Continent Name</label>
+														<select id="name" name="name">
+															<option value = "Africa">Africa</option>
+															<option value = "Asia">Asia</option>
+															<option value = "Europe">Europe</option>
+															<option value = "North America">North America</option>
+															<option value = "Oceania">Oceania</option>
+															<option value = "South America">South America</option>
+														</select>
+													</div>
+												</div>
+												<ul class="actions">
+													<li><input type="submit" name="submit" id="submit" value="Submit" /></li>
+												</ul>
+											</form>
+
+										</div>
+									</section>
+
+						
+
+										</div>
+									</section>
+
+							</div>
+
+
+						</div>
+					</section>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+		<!-- Note: Only needed for demo purposes. Delete for production sites. -->
+			<script src="assets/js/demo.js"></script>
+
+	</body>
+</html>
