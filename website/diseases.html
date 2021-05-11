@@ -37,7 +37,26 @@
 
 											<form method="post" action="government_disease.php">
 													<label for="count">Governments and Diseases</label>
-													Disease: <input type="text" name="disease1" id="disease1" value="" />
+													Disease: 
+													<select name="disease1" id="disease1">
+														<option value = "Congenital Rubella Syndrome">Congenital Rubella Syndrome</option>
+														<option value = "Diphteria">Diphteria</option>
+														<option value = "Japanese encephalitis">Japanese encephalitis</option>
+														<option value = "Measles">Measles</option>
+														<option value = "Mumps">Mumps</option>
+														<option value = "Neonatal tetanus">Neonatal tetanus</option>
+														<option value = "Poliomyelitis">Poliomyelitis</option>
+														<option value = "Rubella">Rubella</option>
+														<option value = "Total tetanus">Total tetanus</option>
+														<option value = "Yellow fever">Yellow fever</option>
+														<option value = "HIV">HIV</option>
+														<option value = "Malaria">Malaria</option>
+														<option value = "Buruli Ulcer">Buruli Ulcer</option>
+														<option value = "Dracunculiasis">Dracunculiasis</option>
+														<option value = "Cutaneous Leishmaniasis">Cutaneous Leishmaniasis</option>
+														<option value = "Leprosy">Leprosy</option>
+														<option value = "Turberculosis">Turberculosis</option>
+													</select>
 													<br>
 													Year: <input type="number" name="year1" id="year1" value="" />
 													<input type="submit" name="submit" id="submit" value="Submit" />
@@ -96,9 +115,33 @@
 
 											<form method="post" action="top_government_disease.php">
 													Government: 
-													<input type="text" name="government3" id="government3" value="" /> 
+													<select name="government3" id="government3">
+														<option value = "Absolute Monarchy">Absolute Monarchy</option>
+														<option value = "Constitutional Monarchy">Constitutional Monarchy</option>
+														<option value = "Provisional">Provisional</option>
+														<option value = "Republic">Republic</option>
+													</select>
+
 													<br> Disease: 
-													<input type="text" name="disease3" id="disease3" value="" />
+													<select name="disease3" id="disease3">
+														<option value = "Congenital Rubella Syndrome">Congenital Rubella Syndrome</option>
+														<option value = "Diphteria">Diphteria</option>
+														<option value = "Japanese encephalitis">Japanese encephalitis</option>
+														<option value = "Measles">Measles</option>
+														<option value = "Mumps">Mumps</option>
+														<option value = "Neonatal tetanus">Neonatal tetanus</option>
+														<option value = "Poliomyelitis">Poliomyelitis</option>
+														<option value = "Rubella">Rubella</option>
+														<option value = "Total tetanus">Total tetanus</option>
+														<option value = "Yellow fever">Yellow fever</option>
+														<option value = "HIV">HIV</option>
+														<option value = "Malaria">Malaria</option>
+														<option value = "Buruli Ulcer">Buruli Ulcer</option>
+														<option value = "Dracunculiasis">Dracunculiasis</option>
+														<option value = "Cutaneous Leishmaniasis">Cutaneous Leishmaniasis</option>
+														<option value = "Leprosy">Leprosy</option>
+														<option value = "Turberculosis">Turberculosis</option>
+													</select>
 													<input type="submit" name="submit" id="submit" value="Submit" />
 											</form>
 
@@ -208,17 +251,30 @@
 										<div class="content">
 											<form method="post" action="income_comm_disease.php">
 												Income type: 
-												<input type="text" name="income7" id="income7" value="" />
+												<select id="income7" name="income7">
+														<option value = "Lower middle income">Lower Middle Income</option>
+														<option value = "Upper middle income">Upper Middle Income</option>
+														<option value = "Low income">Low Income</option>
+														<option value = "High income">High Income</option>
+												</select>
 												<br>
-												<input type="text" name="continent7" id="continent7" value="" />
+												Continent:
+												<select id="continent7" name="continent7">
+													<option value = "Africa">Africa</option>
+													<option value = "Asia">Asia</option>
+													<option value = "Europe">Europe</option>
+													<option value = "North America">North America</option>
+													<option value = "Oceania">Oceania</option>
+													<option value = "South America">South America</option>
+												</select>
 												<br>
 												More than 
 												<input type="text" name="cases7" id="cases7" value="" />
 												cases
 												<br>
 												<select id="comm" name="comm">
-															<option value = "Communicable">Communcable</option>
-															<option value = "Non-communicable">Non-communicable</option>
+														<option value = "Communicable">Communicable</option>
+														<option value = "Non-communicable">Non-communicable</option>
 												</select>
 												<br>
 												from year <input type="number" name="year71" id="year71" value="" /> 
