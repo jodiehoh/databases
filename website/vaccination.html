@@ -30,11 +30,15 @@
 
 								<!-- Form -->
 									<section>
+										<header>
+											<h4>Vaccine Count Info</h4>
+										</header>
 										<div class="content">
 
 											<form method="post" action="vaccine_doses.php">
-													<label for="count">Vaccine Count</label>
+													Vaccine doses:
 													<input type="number" name="count" id="count" value="" />
+													<br>
 													<input type="submit" name="submit" id="submit" value="Submit" />
 
 											</form>
@@ -55,10 +59,14 @@
 
 								<!-- Form -->
 									<section>
+										<header>
+											<h4>Maxiumum Doses Info</h4>
+										</header>
 										<div class="content">
 											<form method="post" action="country_vaccination.php">
-												<label for = "country">Country Name</label>
+												Country name:
 												<input type="text" name="country" id="country" value="" />
+												<br>
 												<input type="submit" name="submit" id="submit" value="Submit" />
 											
 											</form>
@@ -67,7 +75,7 @@
 								<!-- Text -->
 									<section>
 										<header>
-											<h3> Most Recent Vaccine Doses vs. Starting Doses Count</h3>
+											<h3> Most Recent Vaccine Doses vs. Starting Doses</h3>
 										</header>
 										<div class="content">
 											<p>Show all the countires whose current doses are less than the starting doses for any vaccine and in any given year.</p>
@@ -77,6 +85,9 @@
 
 								<!-- Form -->
 									<section>
+										<header>
+											<h4> Most Recent Vaccine Doses vs. Starting Doses Info</h4>
+										</header>
 										<div class="content">
 
 											<form method="post" action="most_recent_doses.php">
@@ -101,8 +112,10 @@
 
 								<!-- Form -->
 									<section>
+										<header>
+											<h4> Vaccine Doses and Disease Cases by Continent Info</h4>
+										</header>
 										<div class="content">
-
 											<form method="post" action="continent_vaccine_disease.php">
 													<input type="submit" name="submit" id="submit" value="Submit" />
 											</form>
