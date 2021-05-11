@@ -48,23 +48,15 @@ if (false) {
         //Report result set by visiting each row in it
                while ($row = $result->fetch_row()) {
                   $obj = NULL;
-                  $obj->x = $row[0];
-                  $obj->y = $row[2];
+                  $obj->label = $row[0]."(".$row[1].")";
+                  $obj->y = array($row[2], $row[3]);
                   $json = $obj;
-                  $rows[$row[1]][] = $json;
-         } 
+                  
+                  array_push($data, $json);
+                } 
 
-          foreach ($rows as $key => $value) {
-             // $arr[3] will be updated with each value from $arr...
-             $outer = NULL;
-             $outer->type = "rangeArea";
-             $outer->name = $key;
-             $outer->showInLegend = "true";
-             $outer->dataPoints = $rows[$key];
-
-             array_push($data, $outer);
-         }
-          print_r(json_encode($data));     
+          
+          print(json_encode($data));     
          }   
 
          //We are done with the result set returned above, so free it
@@ -99,16 +91,24 @@ $conn->close();
 window.onload = function () {
  
 var chart = new CanvasJS.Chart("chartContainer", {
-  animationEnabled: true,
-  title:{
-    text: "Blood Pressure Readings over a Day"
+  title: {
+    text: "Estimated Levelized Cost of Electricity in US by 2020"
   },
+  theme: "light1",
+  animationEnabled: true,
   axisY: {
-    title: "Pressure (in mmHg)",
-    gridThickness: 0
-},
-	data: <?php echo json_encode($data) ?>
-  
+    prefix: "$",
+    suffix: "/Mwh",
+    includeZero: false
+  },
+  data: [
+    {
+      type: "rangeColumn",
+      yValueFormatString: "$#,##0/Mwh",
+      toolTipContent: "{label}<br>Minimum: {y[0]}<br>Maximum: {y[1]}",
+      dataPoints: <?php echo json_encode($data, JSON_NUMERIC_CHECK); ?>
+    }
+  ]
 });
  
 chart.render();
