@@ -12,7 +12,7 @@ BEGIN
 
 	IF NOT EXISTS(SELECT * FROM CountryInfo WHERE CountryName = cntry AND Yr = yer) THEN	       
 		
-		IF NOT EXISTS(SELECT * FROM Country WHERE CountryName = cntry)
+		IF NOT EXISTS(SELECT * FROM Country WHERE CountryName = cntry) THEN 
 			INSERT INTO Country (CountryName) VALUES (cntry);
 		END IF;
 		
