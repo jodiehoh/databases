@@ -9,15 +9,16 @@ CREATE PROCEDURE HighestCases()
 BEGIN
 	
 	WITH TopCases AS (
-        SELECT CountryName, DiseaseName, Yr, MAX (Cases) as TopCase
+        SELECT CountryName, DiseaseName, MAX (Cases) as TopCase
 		FROM HasDisease
-		GROUP BY CountryName
+		GROUP BY CountryName, DiseaseName
 		ORDER BY TopCase DESC
 		LIMIT 1)
-	SELECT H.CountryName, H.DiseaseName, H.Yr, H.Cases
-	FROM HasDisease AS H, TopCases AS T
-	WHERE H.CountryName = T.CountryName AND H.DiseaseName = T.DiseaseName;
 
+
+		SELECT H.CountryName, H.DiseaseName, H.Yr, H.Cases
+		FROM HasDisease AS H, TopCases AS T
+WHERE H.CountryName = T.CountryName AND H.DiseaseName = T.DiseaseName;
 END; //
 
 DELIMITER ;
