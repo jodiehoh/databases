@@ -39,23 +39,24 @@ if (false) {
          if ($result->num_rows == 0) {
 
             //Result contains no rows at all
-            echo "No population history for this country";
+            echo "No highest incidence for this country";
 
          } else {
-              echo "<table border =\"2px solid black\">";
-              echo "<tr><td>Country</td><td>Disease</td><td>Year</td><td>Cases</td></tr>";
+              $rows = array();
+              $data = array();
 
-              while ($row = $result->fetch_row()) {
-              // $arr[3] will be updated with each value from $arr...
-                echo "<tr>";
-                echo "<td>".$row[0]."</td>";
-                echo "<td>".$row[1]."</td>";
-		echo "<td>".$row[2]."</td>";
-		echo "<td>".$row[3]."</td>";
-                echo "</tr>";
-              }
-              echo "</table>";  
-         }   
+              $country = $row[0];
+              $disease = $row[1];
+        
+              //Report result set by visiting each row in it
+               while ($row = $result->fetch_row()) {
+                  $obj = NULL;
+                  $obj->label = $row[3];
+                  $obj->y = $row[4];
+                  $json = $obj;
+                  
+                  array_push($data, $json);
+                }   
 
          //We are done with the result set returned above, so free it
          $result->free_result();
@@ -86,8 +87,27 @@ $conn->close();
 ?>
 
 <script>
+var country = <?php echo $country ?>;
+var diease = <?php echo $disease ?>;
+window.onload = function () {
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+  title: {
+    text: "Case History for".concat(country, " for ", disease)
+  },
+  axisY: {
+    title: "Number of Cases"
+  },
+  data: [{
+    type: "line",
+    dataPoints: <?php echo json_encode($data) ?>
+  }]
+});
+chart.render();
+ 
+}
 </script>
-
+<div id="chartContainer" style="height: 370px; max-width: 900px; margin: 0px auto;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="assets/js/canvasjs.min.js"></script>
 </body>
