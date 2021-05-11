@@ -3,9 +3,9 @@
 
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS PopulationHistory //
+DROP PROCEDURE IF EXISTS CommunicableDisease //
 
-CREATE PROCEDURE PopulationHistory(IN comm BOOLEAN, IN year1 INT, IN year2 INT)
+CREATE PROCEDURE CommunicableDisease(IN comm BOOLEAN, IN year1 INT, IN year2 INT)
 BEGIN	
 
 	
