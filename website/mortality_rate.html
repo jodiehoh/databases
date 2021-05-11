@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+				<!-- Additional Elements -->
+					<section class="wrapper style1 align-center">
+						<div class="inner">
+							<h2>Mortality Rate Queries</h2>
+							<p>This page is dedicated to queries involving mortality rate data (mortality rate in each country by year). </p>
+							<div class="index align-left">
+
+								<!-- Text -->
+									<section>
+										<header>
+											<h3>Highest Mortality Rate</h3>
+										</header>
+										<div class="content">
+											<p>Show the top countires with highest mortality rates.</p>
+
+										</div>
+									</section>
+
+								<!-- Form -->
+									<section>
+										<header>
+											<h3>VHighest Mortality Rate</h3>
+										</header>
+										<div class="content">
+
+											<form method="post" action="highest_mortality_rate.php">
+													<label for="count">Higheset Mortality Rate</label>
+													Top <input type="number" name="top" id="top" value="" /> countries in 
+													<input type="text" name="cotinent" id="continent" value="" /> in year
+													<input type="number" name="year" id="year" value="" /> in year
+													<input type="submit" name="submit" id="submit" value="Submit" />
+
+											</form>
+
+										</div>
+									</section>
+
+									<!-- Text -->
+									<section>
+										<header>
+											<h3>Diseases by Mortality Rate</h3>
+										</header>
+										<div class="content">
+											<p>Show the total number of disease in all countries whose mortality rate is below a certain threshold in a given period of time.</p>
+
+										</div>
+									</section>
+
+								<!-- Form -->
+									<section>
+										<header>
+											<h3>Diseases by Mortality Rate Form</h3>
+										</header>
+										<div class="content">
+											<form method="post" action="less_mortality_rate.php">
+												Mortality rate less than <input type="number" name="mrpercent" id="mrpercent" value="" />%
+												from years <input type="number" name="startYear" id="startYear" value="" /> to
+												<input type="number" name="endYear" id="endYear" value="" />
+												<input type="submit" name="submit" id="submit" value="Submit" />
+											
+											</form>
+									</section>
+
+								<!-- Text -->
+									<section>
+										<header>
+											<h3>Highest Mortality Rate by Country Starting Sequence and Income</h3>
+										</header>
+										<div class="content">
+											<p>Show the country with the highest mortality rate that starts with a certain sequence and has a particular income type.</p>
+
+										</div>
+									</section>
+
+								<!-- Form -->
+									<section>
+										<header>
+											<h3>Highest Mortality Rate by Country Starting Letter and Income Form</h3>
+										</header>
+										<div class="content">
+
+											<form method="post" action="most_recent_doses.php">
+													Starting sequence: 
+													<input type="text" name="startSeq" id="startSeq" value="" /> 
+													<br> Income type: 
+													<input type="text" name="income" id="income" value="Submit" />
+											</form>
+
+										</div>
+									</section>
+
+								<!-- Form -->
+									<section>
+										<header>
+											<h3>Most Recent Vaccine Doses vs. Starting Doses Count Form</h3>
+										</header>
+										<div class="content">
+
+											<form method="post" action="continent_vaccine_disease.php">
+													<input type="submit" name="submit" id="submit" value="Submit" />
+											</form>
+
+										</div>
+									</section>
+
+							</div>
+
+
+						</div>
+					</section>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+		<!-- Note: Only needed for demo purposes. Delete for production sites. -->
+			<script src="assets/js/demo.js"></script>
+
+	</body>
+</html>
