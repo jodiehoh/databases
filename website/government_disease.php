@@ -103,7 +103,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
    animationEnabled: true,
    theme: "light2",
    title:{
-      text: "Percentage of each government type affected in the associated yearg"
+      text: "Percentage of each government type affected in the associated year"
    },
    axisX: {
       title: "Government Type"
