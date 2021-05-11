@@ -8,8 +8,8 @@ include 'open.php';
 
 //Override the PHP configuration file to display all errors
 //This is useful during development but generally disabled before release
-//ini_set('error_reporting', E_ALL);
-//ini_set('display_errors', true);
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', true);
 
 if (isset($_POST['startSeq'])) {
     $start = $_POST['startSeq'];
@@ -28,7 +28,7 @@ if (empty($start) or empty($income)) {
 
    echo "<h3 style=\"text-align:center\">".$income." country starting with \'".$start."\' with highest mortality rate.</h3></br>";
 
-   echo "<br><br>"
+   echo "<br><br>";
    //Prepare a statement that we can later execute. The ?'s are placeholders for
    //parameters whose values we will set before we run the query.
    if ($stmt = $conn->prepare("CALL LetterIncomeMortality(?)")) {
