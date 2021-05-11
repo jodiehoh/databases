@@ -1,5 +1,5 @@
 <head>
-   <title>Population History</title>
+   <title>Country Vaccination</title>
 </head>
 <body>
 <link rel="stylesheet" href="assets/css/main.css" />
@@ -54,18 +54,12 @@ if (empty($country)) {
             //Report result set by visiting each row in it
                while ($row = $result->fetch_row()) {
                   $obj = NULL;
-                  $ratio = NULL;
 
                   $obj->x = $row[0];
-                  $obj->y = $row[3];
-
-                  $ratio->x = $row[0];
-                  $ratio->y =floatval( $row[2]);
+                  $obj->y = $row[2];
 
                   $json = $obj;
-                  $ratio_json = $ratio;
                   array_push($rows, $json);
-                  array_push($ratios, $ratio_json);
                } 
          }   
 
@@ -101,8 +95,6 @@ $conn->close();
 
    var chart = null;
    var dataPoints = [];
-
-   var ratio_chart = null;
 
    window.onload = function() {
 
@@ -160,7 +152,6 @@ $conn->close();
          });
       }
       chart.render();
-      ratio_chart.render();
    }
 
 </script>
