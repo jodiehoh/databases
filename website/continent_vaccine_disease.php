@@ -49,33 +49,33 @@ if (false) {
         //Report result set by visiting each row in it
                while ($row = $result->fetch_row()) {
                   $vaccine = NULL;
-                  $vaccine->x = $row[0];
-                  $vaccine->y = $row[2];
+                  $vaccine->label = $row[0];
+                  $vaccine->y = intval($row[2]);
 
                   array_push($vaccines, $vaccine);
                   
                   $disease = NULL;
-                  $disease->x = $row[0];
-                  $disease->y = $row[1];
+                  $disease->label = $row[0];
+                  $disease->y = intval($row[1]);
 
                   array_push($diseases, $disease);
             } 
 
 
                $outer = NULL;
-	      $outer->type = "line";
-	      $outer->axisYType= "secondary";
-	      $outer->name = "Vaccine Doses";
-	      $outer->markerSize = 0;
+      	      $outer->type = "line";
+      	      $outer->axisYType= "secondary";
+      	      $outer->name = "Vaccine Doses";
+      	      $outer->markerSize = 0;
                $outer->showInLegend = "true";
                $outer->dataPoints = $vaccines;
 
                array_push($data, $outer);
 
                $outer = NULL;
-	       $outer->type = "line";
-	       $outer->axisYType= "secondary";
-	       $outer->markerSize = 0;
+	             $outer->type = "line";
+	             $outer->axisYType= "secondary";
+	             $outer->markerSize = 0;
                $outer->name = "Disease Cases";
                $outer->showInLegend = "true";
                $outer->dataPoints = $diseases;
