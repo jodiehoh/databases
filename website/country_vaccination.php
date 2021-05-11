@@ -16,7 +16,7 @@ if (isset($_POST['country'])) {
 }
 
 
-echo "<h2 style=\"text-align:center\">Population History </h2>";
+echo "<h2 style=\"text-align:center\">Country Vaccination  </h2>";
 
 //Determine if any input was actually collected
 if (empty($country)) {
