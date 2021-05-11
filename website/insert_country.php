@@ -1,5 +1,5 @@
 <head>
-   <title>Government Disease</title>
+   <title>Insert Country</title>
 </head>
 <body>
 <link rel="stylesheet" href="assets/css/main.css" />
@@ -39,7 +39,7 @@ if (empty($country) or empty($continent) or empty($government) or empty($region)
 
 } else {
 
-   echo "<h3 style=\"text-align:center\">".$country." ".$continent"</h3></br>";
+   echo "<h3 style=\"text-align:center\">".$country." ".$continent."</h3></br>";
    echo "<h3 style=\"text-align:center\">".$government." ".$region." ".$income"</h3></br>";
 
    echo "<br><br>";
