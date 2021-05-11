@@ -30,32 +30,18 @@
 
 								<!-- Form -->
 									<section>
+										<header>
+											<h4>Governments and Diseases Info</h4>
+										</header>
 										<div class="content">
 
 											<form method="post" action="government_disease.php">
-													<label for="count">Governments and Diseases</label>
-													Disease: 
-													<select name="disease1" id="disease1">
-														<option value = "Congenital Rubella Syndrome">Congenital Rubella Syndrome</option>
-														<option value = "Diphteria">Diphteria</option>
-														<option value = "Japanese encephalitis">Japanese encephalitis</option>
-														<option value = "Measles">Measles</option>
-														<option value = "Mumps">Mumps</option>
-														<option value = "Neonatal tetanus">Neonatal tetanus</option>
-														<option value = "Poliomyelitis">Poliomyelitis</option>
-														<option value = "Rubella">Rubella</option>
-														<option value = "Total tetanus">Total tetanus</option>
-														<option value = "Yellow fever">Yellow fever</option>
-														<option value = "HIV">HIV</option>
-														<option value = "Malaria">Malaria</option>
-														<option value = "Buruli Ulcer">Buruli Ulcer</option>
-														<option value = "Dracunculiasis">Dracunculiasis</option>
-														<option value = "Cutaneous Leishmaniasis">Cutaneous Leishmaniasis</option>
-														<option value = "Leprosy">Leprosy</option>
-														<option value = "Turberculosis">Turberculosis</option>
-													</select>
+													Disease:
+													<input type="text" name="disease1" id="disease1" value="" />
 													<br>
-													Year: <input type="number" name="year1" id="year1" value="" />
+													Year: 
+													<input type="number" name="year1" id="year1" value="" />
+													<br>
 													<input type="submit" name="submit" id="submit" value="Submit" />
 											</form>
 
@@ -75,8 +61,12 @@
 
 								<!-- Form -->
 									<section>
+										<header>
+											<h4>Communicable Diseases in Continents Info</h4>
+										</header>
 										<div class="content">
 											<form method="post" action="comm_disease.php">
+												Disease type:
 												<select id="comm" name="comm">
 															<option value = "1">Communicable</option>
 															<option value = "0">Non-communicable</option>
@@ -102,6 +92,9 @@
 
 								<!-- Form -->
 									<section>
+										<header>
+											<h4>Government Top Disease Info</h4>
+										</header>
 										<div class="content">
 
 											<form method="post" action="top_government_disease.php">
@@ -112,27 +105,10 @@
 														<option value = "Provisional">Provisional</option>
 														<option value = "Republic">Republic</option>
 													</select>
-
-													<br> Disease: 
-													<select name="disease3" id="disease3">
-														<option value = "Congenital Rubella Syndrome">Congenital Rubella Syndrome</option>
-														<option value = "Diphteria">Diphteria</option>
-														<option value = "Japanese encephalitis">Japanese encephalitis</option>
-														<option value = "Measles">Measles</option>
-														<option value = "Mumps">Mumps</option>
-														<option value = "Neonatal tetanus">Neonatal tetanus</option>
-														<option value = "Poliomyelitis">Poliomyelitis</option>
-														<option value = "Rubella">Rubella</option>
-														<option value = "Total tetanus">Total tetanus</option>
-														<option value = "Yellow fever">Yellow fever</option>
-														<option value = "HIV">HIV</option>
-														<option value = "Malaria">Malaria</option>
-														<option value = "Buruli Ulcer">Buruli Ulcer</option>
-														<option value = "Dracunculiasis">Dracunculiasis</option>
-														<option value = "Cutaneous Leishmaniasis">Cutaneous Leishmaniasis</option>
-														<option value = "Leprosy">Leprosy</option>
-														<option value = "Turberculosis">Turberculosis</option>
-													</select>
+													<br> 
+													Disease: 
+													<input type="text" name="disease3" id="disease3" value="" />
+													<br>
 													<input type="submit" name="submit" id="submit" value="Submit" />
 											</form>
 
@@ -151,6 +127,9 @@
 
 								<!-- Form -->
 									<section>
+										<header>
+											<h4>Highest Incidence of a Disease Info</h4>
+										</header>
 										<div class="content">
 
 											<form method="post" action="highest_cases.php">
@@ -174,6 +153,9 @@
 
 								<!-- Form -->
 									<section>
+										<header>
+											<h4>Countries with No Diseases Info</h4>
+										</header>
 										<div class="content">
 
 											<form method="post" action="income_disease.php">
@@ -183,6 +165,7 @@
 															<option value = "Low income">Low Income</option>
 															<option value = "High income">High Income</option>
 													</select>
+													<br>
 													<input type="submit" name="submit" id="submit" value="Submit" />
 											</form>
 
@@ -202,12 +185,16 @@
 
 								<!-- Form -->
 									<section>
+										<header>
+											<h4>Diseases by Mortality Rate Info</h4>
+										</header>
 										<div class="content">
 											<form method="post" action="less_mortality_disease.php">
 												Mortality rate less than <input type="number" name="mrpercent" id="mrpercent" value="" />%
 												<br>
 												from year <input type="number" name="year61" id="year61" value="" /> 
 												to <input type="number" name="year62" id="year62" value="" />
+												<br>
 												<input type="submit" name="submit" id="submit" value="Submit" />
 											
 											</form>
@@ -226,6 +213,9 @@
 
 								<!-- Form -->
 									<section>
+										<header>
+											<h4>Diseases by Mortality Rate Info</h4>
+										</header>
 										<div class="content">
 											<form method="post" action="income_comm_disease.php">
 												Income type: 
@@ -250,6 +240,7 @@
 												<input type="number" name="cases7" id="cases7" value="" />
 												cases
 												<br>
+												Disease type:
 												<select id="comm" name="comm">
 														<option value = "1">Communicable</option>
 														<option value = "0">Non-communicable</option>
