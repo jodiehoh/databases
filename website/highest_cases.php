@@ -22,7 +22,7 @@ if (false) {
 
    //Prepare a statement that we can later execute. The ?'s are placeholders for
    //parameters whose values we will set before we run the query.
-   if ($stmt = $conn->prepare("CALL HighestCases()")) {
+   if ($stmt = $conn->prepare("CALL HighCase()")) {
 
       //Attach the ? in prepared statements to variables (even if those variables
       //don't hold the values we want yet).  First parameter is a list of types of
@@ -43,14 +43,15 @@ if (false) {
 
          } else {
               echo "<table border =\"2px solid black\">";
-              echo "<tr><td>Country</td><td>Year</td><td>Cases</td></tr>";
+              echo "<tr><td>Country</td><td>Disease</td><td>Year</td><td>Cases</td></tr>";
 
               while ($row = $result->fetch_row()) {
               // $arr[3] will be updated with each value from $arr...
                 echo "<tr>";
                 echo "<td>".$row[0]."</td>";
                 echo "<td>".$row[1]."</td>";
-                echo "<td>".$row[2]."</td>";
+		echo "<td>".$row[2]."</td>";
+		echo "<td>".$row[3]."</td>";
                 echo "</tr>";
               }
               echo "</table>";  
@@ -85,39 +86,8 @@ $conn->close();
 ?>
 
 <script>
-window.onload = function () {
- 
-var chart = new CanvasJS.Chart("chartContainer", {
-  title: {
-    text: "Starting Dose and Most Recent Dose"
-  },
-  theme: "light1",
-  animationEnabled: true,
-  axisX: {
-  	title: "Vaccine",
-	interval: 1,
-  },
-  axisY: {
-    title: "Number of Doses",
-    includeZero: false
-  },
-  data: [
-    {
-      type: "rangeColumn",
-      yValueFormatString: "##",
-      toolTipContent: "{label}<br>Starting Dose: {y[1]}<br>Recent Dose: {y[0]}",
-      dataPoints: <?php echo json_encode($data, JSON_NUMERIC_CHECK); ?>
-    }
-  ]
-});
- 
-chart.render();
- 
-}
 </script>
 
-<div id="chartContainer" style="height: 370px; max-width: 1500px; margin: 0px auto;"></div>
-<div id="ratiochartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="assets/js/canvasjs.min.js"></script>
 </body>
