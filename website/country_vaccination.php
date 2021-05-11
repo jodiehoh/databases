@@ -50,8 +50,8 @@ if (empty($country)) {
 
          } else {
               $rows = array();
-              $ratios = array();
-            //Report result set by visiting each row in it
+	      
+	      //Report result set by visiting each row in it
                while ($row = $result->fetch_row()) {
                   $obj = NULL;
 
@@ -59,9 +59,11 @@ if (empty($country)) {
                   $obj->y = $row[2];
 
                   $json = $obj;
-                  array_push($rows, $json);
-               } 
-         }   
+	       		$rows[$row[1]][] = $json;
+
+	       } 
+	 print(json_encode($rows['BCG']));
+	 }   
 
          //We are done with the result set returned above, so free it
          $result->free_result();
@@ -119,6 +121,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       xValueFormatString: "DD, MMM",
       yValueFormatString: "$#,##0",
       dataPoints: [
+		<? php echo json_encode($rows['BCG']) ?>
       ]
    },
    {
