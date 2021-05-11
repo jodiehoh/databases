@@ -2,7 +2,6 @@ CREATE TABLE Country (
         Continent VARCHAR(255),
 	CountryName VARCHAR(255),
 	Government VARCHAR(255),
-	CountryCode VARCHAR(30),
 	Region VARCHAR(255),
 	IncomeGroup VARCHAR(255),
         CountryID VARCHAR(20),
