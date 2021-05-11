@@ -51,10 +51,21 @@ if (empty($count)) {
          } else {
             //Report result set by visiting each row in it
 
-            while ($row = $result->fetch_row()) {
-                  
-                  echo $row[0].$row[1];
-               } 
+            $rows = array();
+            while ($row = $result->fetch_row()) {}
+                  $rows[$row[0]][] = $row[1];
+            } 
+
+            echo "<table border =\"2px solid black\">";
+            echo "<tr><td>Country</td><td>Vaccines</td></tr>";
+
+            foreach ($rows as $key => $value) {
+             // $arr[3] will be updated with each value from $arr...
+               echo "<tr>";
+               echo "<td>".$key."</td>";
+               echo "<td>".$value."</td>";
+               echo "</tr>";
+            }
             /*
                $row = $result->fetch_row();
                echo "<b>".row[0].": </b>".row[1].", ";
