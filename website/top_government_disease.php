@@ -55,7 +55,7 @@ if (empty($govt) or empty($dis)) {
 
             $row = $result->fetch_row();
             echo "Country: ".row["CountryName"]."<br>";
-            echo dis." cases: ".row["Cases"];
+            echo dis." total cases: ".row["Cases"];
 
          }   
 
