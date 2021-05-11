@@ -50,6 +50,7 @@ if (empty($country)) {
 
          } else {
               $rows = array();
+              $data = array();
 	      
 	      //Report result set by visiting each row in it
                while ($row = $result->fetch_row()) {
@@ -59,6 +60,23 @@ if (empty($country)) {
                   $json = $obj;
                   $rows[$row[1]][] = $json;
 	       } 
+
+          foreach ($rows as $key => $value) {
+             // $arr[3] will be updated with each value from $arr...
+             $outer = NULL;
+             $outer->type = "stackedBar";
+             $outer->name = $key;
+             $outer->showInLegend = "true";
+             $outer->dataPoints = $rows[$key];
+
+             array_push($data, $outer);
+         }
+
+         print_r($data);
+
+
+
+
 	 }   
 
          //We are done with the result set returned above, so free it
@@ -98,6 +116,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       text: "Country Vaccination"
    },
    axisX: {
+      title: "Year"
       valueFormatString: "####"
    },
    axisY: {
@@ -115,52 +134,11 @@ var chart = new CanvasJS.Chart("chartContainer", {
       name: "BCG",
       showInLegend: "true",
       dataPoints: 
-	<?php if (array_key_exists('BCG', $rows)) {  
-		echo json_encode($rows['BCG']); 
-	} 
-	?>
+      	<?php if (array_key_exists('BCG', $rows)) {  
+      		echo json_encode($rows['BCG']); 
+      	} 
+      	?>
       
-   },
-   {
-      type: "stackedBar",
-      name: "Snacks",
-      showInLegend: "true",
-      xValueFormatString: "DD, MMM",
-      yValueFormatString: "$#,##0",
-      dataPoints: [
-      ]
-   },
-   {
-      type: "stackedBar",
-      name: "Drinks",
-      showInLegend: "true",
-      xValueFormatString: "DD, MMM",
-      yValueFormatString: "$#,##0",
-      dataPoints: [
-         { x: new Date(2017, 0, 30), y: 48 },
-         { x: new Date(2017, 0, 31), y: 45 },
-         { x: new Date(2017, 1, 1), y: 41 },
-         { x: new Date(2017, 1, 2), y: 55 },
-         { x: new Date(2017, 1, 3), y: 80 },
-         { x: new Date(2017, 1, 4), y: 85 },
-         { x: new Date(2017, 1, 5), y: 83 }
-      ]
-   },
-   {
-      type: "stackedBar",
-      name: "Dessert",
-      showInLegend: "true",
-      xValueFormatString: "DD, MMM",
-      yValueFormatString: "$#,##0",
-      dataPoints: [
-         { x: new Date(2017, 0, 30), y: 61 },
-         { x: new Date(2017, 0, 31), y: 55 },
-         { x: new Date(2017, 1, 1), y: 61 },
-         { x: new Date(2017, 1, 2), y: 75 },
-         { x: new Date(2017, 1, 3), y: 80 },
-         { x: new Date(2017, 1, 4), y: 85 },
-         { x: new Date(2017, 1, 5), y: 105 }
-      ]
    },
    {
       type: "stackedBar",
