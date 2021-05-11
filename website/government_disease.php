@@ -31,7 +31,7 @@ if (empty($year) or empty($dis)) {
    echo "<br><br>";
    //Prepare a statement that we can later execute. The ?'s are placeholders for
    //parameters whose values we will set before we run the query.
-   if ($stmt = $conn->prepare("CALL TopGovernmentDisease(?, ?)")) {
+   if ($stmt = $conn->prepare("CALL GovernmentDisease(?, ?)")) {
 
       //Attach the ? in prepared statements to variables (even if those variables
       //don't hold the values we want yet).  First parameter is a list of types of
@@ -103,7 +103,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
    animationEnabled: true,
    theme: "light2",
    title:{
-      text: "Percentage of each government type affected in the associated year"
+      text: "Percentage of each government type affected in the associated yearg"
    },
    axisX: {
       title: "Government Type"
