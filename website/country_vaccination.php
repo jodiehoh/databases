@@ -54,15 +54,11 @@ if (empty($country)) {
 	      //Report result set by visiting each row in it
                while ($row = $result->fetch_row()) {
                   $obj = NULL;
-
                   $obj->x = $row[0];
                   $obj->y = $row[2];
-
                   $json = $obj;
-	       		$rows[$row[1]][] = $json;
-
+                  $rows[$row[1]][] = $json;
 	       } 
-	 print(json_encode($rows['BCG']));
 	 }   
 
          //We are done with the result set returned above, so free it
@@ -99,7 +95,7 @@ window.onload = function () {
 var chart = new CanvasJS.Chart("chartContainer", {
    animationEnabled: true,
    title:{
-      text: "Evening Sales in a Restaurant"
+      text: "Country Vaccination"
    },
    axisX: {
       valueFormatString: "DDD"
@@ -118,10 +114,9 @@ var chart = new CanvasJS.Chart("chartContainer", {
       type: "stackedBar",
       name: "Meals",
       showInLegend: "true",
-      xValueFormatString: "DD, MMM",
-      yValueFormatString: "$#,##0",
-      dataPoints: 
-		<?php echo json_encode($rows['BCG']) ?>
+      xValueFormatString: "####",
+      yValueFormatString: "####",
+      dataPoints: <?php if (array_key_exists('BCG', $rows)) { echo json_encode($rows['BCG']) } ?>
       
    },
    {
