@@ -31,15 +31,15 @@
 								<!-- Form -->
 									<section>
 										<header>
-											<h3>VHighest Mortality Rate</h3>
+											<h3>Highest Mortality Rate</h3>
 										</header>
 										<div class="content">
 
 											<form method="post" action="highest_mortality_rate.php">
-													<label for="count">Higheset Mortality Rate</label>
+													<label for="count">Highest Mortality Rate</label>
 													Top <input type="number" name="top" id="top" value="" /> countries in 
 													<input type="text" name="cotinent" id="continent" value="" /> in year
-													<input type="number" name="year" id="year" value="" /> in year
+													<input type="number" name="year" id="year" value="" />
 													<input type="submit" name="submit" id="submit" value="Submit" />
 
 											</form>
@@ -97,7 +97,13 @@
 													Starting sequence: 
 													<input type="text" name="startSeq" id="startSeq" value="" /> 
 													<br> Income type: 
-													<input type="text" name="income" id="income" value="" />
+													<select id="income" name="income">
+															<option value = "Lower middle income">Lower Middle Income</option>
+															<option value = "Upper middle income">Upper Middle Income</option>
+															<option value = "Low income">Low Income</option>
+															<option value = "High income">High Income</option>
+
+													</select>
 													<input type="submit" name="submit" id="submit" value="Submit" />
 											</form>
 
