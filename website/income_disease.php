@@ -50,10 +50,10 @@ if (empty($income)) {
 
          } else {
             //Report result set by visiting each row in it
-            <br><br>
+            echo "<br><br>";
             $index = 1;
-            foreach($result as $row) {
-              echo $index.". ".$row["CountryName"]."<br>";
+            while ($row = $result->fetch_row()) {
+              echo $index.". ".$row[0]."<br>";
               $index = $index + 1;
             }
          }   
