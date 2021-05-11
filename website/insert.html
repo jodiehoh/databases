@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+
+    <!-- Wrapper -->
+      <div id="wrapper" class="divided">
+        <!-- Additional Elements -->
+          <section class="wrapper style1 align-center">
+            <div class="inner">
+              <h2>Insert Data</h2>
+              <p>This page is dedicated to inserting user data, it can be about countries, diseases, mortality rates, vaccines, etc. </p>
+              <div class="index align-left">
+
+                <!-- Text -->
+                  <section>
+                    <header>
+                      <h3>Country</h3>
+                    </header>
+                  </section>
+
+                <!-- Form -->
+                  <section>
+                    <header>
+                      <h3>Add a new country</h3>
+                    </header>
+                    <div class="content">
+
+                      <form method="post" action="insert_country.php">
+                          Country Name: 
+                          <input type="text" name="country1" id="country1" value="" required />
+                          <br>
+                          Continent: 
+                          <select id="continent1" name="continent1">
+                            <option value = "Africa">Africa</option>
+                            <option value = "Asia">Asia</option>
+                            <option value = "Europe">Europe</option>
+                            <option value = "North America">North America</option>
+                            <option value = "Oceania">Oceania</option>
+                            <option value = "South America">South America</option>
+                          </select>
+                          <br>
+                          Government:
+                          <select name="government1" id="government1">
+                            <option value = "Absolute Monarchy">Absolute Monarchy</option>
+                            <option value = "Constitutional Monarchy">Constitutional Monarchy</option>
+                            <option value = "Provisional">Provisional</option>
+                            <option value = "Republic">Republic</option>
+                          </select>
+                          <br>
+                          Region:
+                          <input type="text" name="region1" id="region1" value="" />
+                          <br>
+                          Income Type:
+                          <select id="income5" name="income5">
+                              <option value = "Lower middle income">Lower Middle Income</option>
+                              <option value = "Upper middle income">Upper Middle Income</option>
+                              <option value = "Low income">Low Income</option>
+                              <option value = "High income">High Income</option>
+                          </select>
+                          <input type="submit" name="submit" id="submit" value="Submit" />
+                      </form>
+
+                    </div>
+                  </section>
+
+                  <!-- Form -->
+                  <section>
+                    <header>
+                      <h3>Add new country information</h3>
+                    </header>
+                    <div class="content">
+
+                      <form method="post" action="insert_country_info.php">
+                          Country name: 
+                          <input type="text" name="country2" id="country2" value="" required />
+                          <br>
+                          Year: 
+                          <input type="number" name="year2" id="year2" value="" required />
+                          <br>
+                          Male population:
+                          <input type="number" name="popMale2" id="popMale2" value="" />
+                          <br>
+                          Female population:
+                          <input type="number" name="popFemale2" id="popFemale2" value="" />
+                          <br>
+                          Population density (in number of people/square mile):
+                          <input type="number" name="popDensity2" id="popDensity2" value="" />
+                          <br>
+                          <input type="submit" name="submit" id="submit" value="Submit" />
+                      </form>
+
+                    </div>
+                  </section>
+
+                  <!-- Text -->
+                  <section>
+                    <header>
+                      <h3>Disease</h3>
+                    </header>
+                  </section>
+
+                <!-- Form -->
+                  <section>
+                    <header>
+                      <h3>Add a new disease</h3>
+                    </header>
+                    <div class="content">
+                      <form method="post" action="insert_disease.php">
+                        Disease name:
+                        <input type="text" name="disease3" id="disease3" value="" required />
+                        <br>
+                        Communicable:
+                        <select id="comm" name="comm">
+                              <option value = "1">Communicable</option>
+                              <option value = "0">Non-communicable</option>
+                        </select>
+                        <br>
+                        <input type="submit" name="submit" id="submit" value="Submit" />
+                      </form>
+                  </section>
+
+                  <!-- Form -->
+                  <section>
+                    <header>
+                      <h3>Add new disease data for a country</h3>
+                    </header>
+                    <div class="content">
+                      <form method="post" action="insert_has_disease.php">
+                        Country name: 
+                        <input type="text" name="country4" id="country4" value="" required />
+                        <br>
+                        Disease name:
+                        <input type="text" name="disease4" id="disease4" value=""  required />
+                        <br>
+                        Year: 
+                        <input type="number" name="year4" id="year4" value="" required />
+                        <br>
+                        Number of cases:
+                        <input type="number" name="cases4" id="cases4" value="" />
+                        <br>
+                        <input type="submit" name="submit" id="submit" value="Submit" />
+                      </form>
+                  </section>
+
+                <!-- Text -->
+                  <section>
+                    <header>
+                      <h3>Mortality Rate</h3>
+                    </header>
+                  </section>
+
+                <!-- Form -->
+                  <section>
+                    <header>
+                      <h3>Add new mortality rate data for a country</h3>
+                    </header>
+                    <div class="content">
+
+                      <form method="post" action="insert_mortality_rate.php">
+                          Country name: 
+                          <input type="text" name="country5" id="country5" value="" required />
+                          <br>
+                          Year: 
+                          <input type="number" name="year5" id="year5" value="" required />
+                          <br>
+                          Mortality rate:
+                          <input type="number" name="mrate5" id="mrate5" value="" />
+                          <br> 
+                          <input type="submit" name="submit" id="submit" value="Submit" />
+                      </form>
+                    </div>
+                  </section>
+
+                  <!-- Text -->
+                  <section>
+                    <header>
+                      <h3>Vaccination</h3>
+                    </header>
+                  </section>
+
+                <!-- Form -->
+                  <section>
+                    <header>
+                      <h3>Add a new vaccine</h3>
+                    </header>
+                    <div class="content">
+                      <form method="post" action="insert_vaccination.php">
+                          Vaccine name:
+                          <input type="text" name="vaccine6" id="vaccine6" value="" required />
+                          <br>
+                          <input type="submit" name="submit" id="submit" value="Submit" />
+                      </form>
+                    </div>
+                  </section>
+
+                  <!-- Form -->
+                  <section>
+                    <header>
+                      <h3>Add a new vaccine</h3>
+                    </header>
+                    <div class="content">
+                      <form method="post" action="insert_vaccination_drive.php">
+                          Country Name: 
+                          <input type="text" name="country7" id="country7" value="" required />
+                          <br>
+                          Vaccine name:
+                          <input type="text" name="vaccine7" id="vaccine7" value="" required />
+                          <br>
+                          Year: 
+                          <input type="number" name="year7" id="year7" value="" required />
+                          <br>
+                          Number of doses:
+                          <input type="number" name="doses7" id="doses7" value="" />
+                          <br>
+                          <input type="submit" name="submit" id="submit" value="Submit" />
+                      </form>
+                    </div>
+                  </section>
+              </div>
+
+
+            </div>
+          </section>
+
+
+      </div>
+
+    <!-- Scripts -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery.scrollex.min.js"></script>
+      <script src="assets/js/jquery.scrolly.min.js"></script>
+      <script src="assets/js/browser.min.js"></script>
+      <script src="assets/js/breakpoints.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <script src="assets/js/main.js"></script>
+
+    <!-- Note: Only needed for demo purposes. Delete for production sites. -->
+      <script src="assets/js/demo.js"></script>
+
+  </body>
+</html>
