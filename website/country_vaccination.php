@@ -98,10 +98,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
       text: "Country Vaccination"
    },
    axisX: {
-      valueFormatString: "DDD"
+      valueFormatString: "####"
    },
    axisY: {
-      prefix: "$"
+      
    },
    toolTip: {
       shared: true
@@ -112,11 +112,13 @@ var chart = new CanvasJS.Chart("chartContainer", {
    },
    data: [{
       type: "stackedBar",
-      name: "Meals",
+      name: "BCG",
       showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "####",
-      dataPoints: <?php if (array_key_exists('BCG', $rows)) { echo json_encode($rows['BCG']) } ?>
+      dataPoints: 
+	<?php if (array_key_exists('BCG', $rows)) {  
+		echo json_encode($rows['BCG']); 
+	} 
+	?>
       
    },
    {
