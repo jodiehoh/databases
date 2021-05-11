@@ -1,6 +1,5 @@
-
 <head>
-   <title>Country Vaccination</title>
+   <title>Population History</title>
 </head>
 <body>
 <link rel="stylesheet" href="assets/css/main.css" />
@@ -9,15 +8,15 @@ include 'open.php';
 
 //Override the PHP configuration file to display all errors
 //This is useful during development but generally disabled before release
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', true);
+//ini_set('error_reporting', E_ALL);
+//ini_set('display_errors', true);
 
 if (isset($_POST['country'])) {
     $country = $_POST['country'];
 }
 
 
-echo "<h2 style=\"text-align:center\">Country Vaccination </h2>";
+echo "<h2 style=\"text-align:center\">Population History </h2>";
 
 //Determine if any input was actually collected
 if (empty($country)) {
@@ -29,7 +28,7 @@ if (empty($country)) {
 
    //Prepare a statement that we can later execute. The ?'s are placeholders for
    //parameters whose values we will set before we run the query.
-   if ($stmt = $conn->prepare("CALL CountryVaccination(?)")) {
+   if ($stmt = $conn->prepare("CALL PopulationHistory(?)")) {
 
       //Attach the ? in prepared statements to variables (even if those variables
       //don't hold the values we want yet).  First parameter is a list of types of
@@ -47,19 +46,28 @@ if (empty($country)) {
          if ($result->num_rows == 0) {
 
             //Result contains no rows at all
-            echo "No vaccination history for this country";
+            echo "No population history for this country";
 
          } else {
+              $rows = array();
+              $ratios = array();
             //Report result set by visiting each row in it
                while ($row = $result->fetch_row()) {
-
                   $obj = NULL;
+                  $ratio = NULL;
 
                   $obj->x = $row[0];
-                  $obj->y = $row[2];
+                  $obj->y = $row[3];
+
+                  $ratio->x = $row[0];
+                  $ratio->y =floatval( $row[2]);
 
                   $json = $obj;
-         }	 
+                  $ratio_json = $ratio;
+                  array_push($rows, $json);
+                  array_push($ratios, $ratio_json);
+               } 
+         }   
 
          //We are done with the result set returned above, so free it
          $result->free_result();
@@ -67,7 +75,7 @@ if (empty($country)) {
       } else {
 
          //Call to execute failed, e.g. because server is no longer reachable,
-	 //or because supplied values are of the wrong type
+    //or because supplied values are of the wrong type
          echo "Execute failed.<br>";
       }
 
@@ -90,123 +98,75 @@ $conn->close();
 ?>
 
 <script>
-window.onload = function () {
 
-var chart = new CanvasJS.Chart("chartContainer", {
-   animationEnabled: true,
-   title:{
-      text: "Evening Sales in a Restaurant"
-   },
-   axisX: {
-      valueFormatString: "DDD"
-   },
-   axisY: {
-      prefix: "$"
-   },
-   toolTip: {
-      shared: true
-   },
-   legend:{
-      cursor: "pointer",
-      itemclick: toggleDataSeries
-   },
-   data: [
-   {
-      type: "stackedBar",
-      name: "BCG",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: []
-   },
-   {
-      type: "stackedBar",
-      name: "MCV1",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: [] 
-   },
-   {
-      type: "stackedBar",
-      name: "Pol3",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: [] 
-   },
-   {
-      type: "stackedBar",
-      name: "BCG",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: [] 
-   },
-   {
-      type: "stackedBar",
-      name: "DTP3",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: [] 
-   },
-   {
-      type: "stackedBar",
-      name: "RotaC",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: [] 
-   },
-   {
-      type: "stackedBar",
-      name: "Hib3",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: [] 
-   },
-   {
-      type: "stackedBar",
-      name: "PAB",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: [] 
-   },
-   {
-      type: "stackedBar",
-      name: "HepB3",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: [] 
-   },
-   {
-      type: "stackedBar",
-      name: "PCV3",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: [] 
-   }]
-});
-chart.render();
+   var chart = null;
+   var dataPoints = [];
 
-function toggleDataSeries(e) {
-   if(typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-      e.dataSeries.visible = false;
+   var ratio_chart = null;
+
+   window.onload = function() {
+
+   chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      theme: "light2",
+      title: {
+         text: "Total Population"
+   },
+      axisX: {
+        valueFormatString: "####",
+        title: "Year",
+        titleFontSize: 24
+   },
+      axisY: {
+         title: "Population (thousands)",
+         titleFontSize: 24
+      },
+      data: [{
+         type: "column",
+         dataPoints: <?php echo json_encode($rows) ?>
+      }]
+   });
+
+    ratio_chart = new CanvasJS.Chart("ratiochartContainer", {
+      animationEnabled: true,
+      theme: "light2",
+      title: {
+         text: "Female to Male Ratio"
+   },
+      axisX: {
+        valueFormatString: "####",
+        title: "Year",
+        titleFontSize: 24
+   },
+      axisY: {
+         valueFormatString:"##.##",
+         title: "Female to Male Ratio",
+         titleFontSize: 24
+      },
+      data: [{
+         type: "column",
+         dataPoints: <?php echo json_encode($ratios) ?>
+      }]
+   });
+
+
+   $.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales.json?callback=?", callback);
    }
-   else {
-      e.dataSeries.visible = true;
+   function callback(data) {
+      for (var i = 0; i < data.dps.length; i++) {
+         dataPoints.push({
+            x: new Date(data.dps[i].date),
+            y: data.dps[i].units
+         });
+      }
+      chart.render();
+      ratio_chart.render();
    }
-   chart.render();
-}
 
 </script>
 
 <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+<div id="ratiochartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="assets/js/canvasjs.min.js"></script>
 </body>
