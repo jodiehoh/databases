@@ -1,5 +1,5 @@
 <head>
-   <title>Population History</title>
+   <title>Starting Dose vs. Recent Dose</title>
 </head>
 <body>
 <link rel="stylesheet" href="assets/css/main.css" />
@@ -12,7 +12,7 @@ include 'open.php';
 //ini_set('display_errors', true);
 
 
-echo "<h2 style=\"text-align:center\">Population History </h2>";
+echo "<h2 style=\"text-align:center\">Starting Dose vs. Recent Dose </h2>";
 
 //Determine if any input was actually collected
 if (false) {
@@ -53,10 +53,7 @@ if (false) {
                   $json = $obj;
                   
                   array_push($data, $json);
-                } 
-
-          
-          print(json_encode($data));     
+                }   
          }   
 
          //We are done with the result set returned above, so free it
@@ -92,19 +89,22 @@ window.onload = function () {
  
 var chart = new CanvasJS.Chart("chartContainer", {
   title: {
-    text: "Estimated Levelized Cost of Electricity in US by 2020"
+    text: "Starting Dose and Most Recent Dose"
   },
   theme: "light1",
   animationEnabled: true,
   axisY: {
-    prefix: "$",
-    suffix: "/Mwh",
+    title: "Vaccine",
+  },
+  axisY: {
+    interval: 1,
+    title: "Number of Doses",
     includeZero: false
   },
   data: [
     {
       type: "rangeColumn",
-      yValueFormatString: "$#,##0/Mwh",
+      yValueFormatString: "##",
       toolTipContent: "{label}<br>Minimum: {y[0]}<br>Maximum: {y[1]}",
       dataPoints: <?php echo json_encode($data, JSON_NUMERIC_CHECK); ?>
     }
