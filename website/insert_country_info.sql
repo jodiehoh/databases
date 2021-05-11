@@ -6,7 +6,6 @@ CREATE PROCEDURE InsertCountryInfo(IN cntry VARCHAR(30),
 	IN yer INT,
 	IN popMale BIGINT,
 	IN popFemale BIGINT,
-	IN popTotal BIGINT,
 	IN popDensity DECIMAL(10, 5))
 
 BEGIN
@@ -18,7 +17,7 @@ BEGIN
 		END IF;
 		
 		INSERT INTO CountryInfo (CountryName, Yr, PopulationMale, PopulationFemale, PopulationTotal, PopulationDensity) 
-		VALUES (cntry, yr, popMale, popFemale, popTotal, popDensity);
+		VALUES (cntry, yr, popMale, popFemale, popMale + popFemale, popDensity);
 	
 	END IF;
 
