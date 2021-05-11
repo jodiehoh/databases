@@ -190,6 +190,7 @@ function toggleDataSeries(e) {
    }
    chart.render();
 }
+}
 
 </script>
 
