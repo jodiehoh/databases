@@ -85,7 +85,6 @@ if (false) {
                $outer->dataPoints = $diseases;
 
                array_push($data, $outer);
-		print(json_encode($data));
          }   
 
          //We are done with the result set returned above, so free it
