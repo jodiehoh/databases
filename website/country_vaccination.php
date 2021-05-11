@@ -120,9 +120,9 @@ var chart = new CanvasJS.Chart("chartContainer", {
       showInLegend: "true",
       xValueFormatString: "DD, MMM",
       yValueFormatString: "$#,##0",
-      dataPoints: [
-		<? php echo json_encode($rows['BCG']) ?>
-      ]
+      dataPoints: 
+		<?php echo json_encode($rows['BCG']) ?>
+      
    },
    {
       type: "stackedBar",
