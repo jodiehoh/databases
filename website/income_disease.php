@@ -53,7 +53,7 @@ if (empty($income)) {
             echo "<br><br>";
             $index = 1;
             while ($row = $result->fetch_row()) {
-              echo $index.". ".$row[0]."<br>";
+              echo "<p style=\"text-align:center\">".$index.". ".$row[0]."<br></p>";
               $index = $index + 1;
             }
          }   
