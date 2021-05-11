@@ -1,4 +1,3 @@
-
 <head>
    <title>Country Vaccination</title>
 </head>
@@ -17,7 +16,7 @@ if (isset($_POST['country'])) {
 }
 
 
-echo "<h2 style=\"text-align:center\">Country Vaccination </h2>";
+echo "<h2 style=\"text-align:center\">Population History </h2>";
 
 //Determine if any input was actually collected
 if (empty($country)) {
@@ -47,31 +46,20 @@ if (empty($country)) {
          if ($result->num_rows == 0) {
 
             //Result contains no rows at all
-            echo "No vaccination history for this country";
+            echo "No population history for this country";
 
          } else {
-               $vaccine_data = new \Ds\Map();
-            //Report result set by visiting each row in it
+              $rows = array();
+	      
+	      //Report result set by visiting each row in it
                while ($row = $result->fetch_row()) {
-
                   $obj = NULL;
-
                   $obj->x = $row[0];
                   $obj->y = $row[2];
-
                   $json = $obj;
-
-                  if ($vaccine_data->hasKey($row[1])) {
-                     $temp = $vaccine_data->get($row[1]);
-
-                     array_push($temp, $json)
-                     $vaccine_data[$row[1]]->put($temp);
-                  }
-                  else {
-                     $vaccine_data[$row[1]]->put($json);
-                  }
-               } 
-         }	 
+                  $rows[$row[1]][] = $json;
+	       } 
+	 }   
 
          //We are done with the result set returned above, so free it
          $result->free_result();
@@ -79,7 +67,7 @@ if (empty($country)) {
       } else {
 
          //Call to execute failed, e.g. because server is no longer reachable,
-	 //or because supplied values are of the wrong type
+    //or because supplied values are of the wrong type
          echo "Execute failed.<br>";
       }
 
@@ -107,13 +95,13 @@ window.onload = function () {
 var chart = new CanvasJS.Chart("chartContainer", {
    animationEnabled: true,
    title:{
-      text: "Evening Sales in a Restaurant"
+      text: "Country Vaccination"
    },
    axisX: {
-      valueFormatString: "DDD"
+      valueFormatString: "####"
    },
    axisY: {
-      prefix: "$"
+      
    },
    toolTip: {
       shared: true
@@ -122,86 +110,73 @@ var chart = new CanvasJS.Chart("chartContainer", {
       cursor: "pointer",
       itemclick: toggleDataSeries
    },
-   data: [
-   {
+   data: [{
       type: "stackedBar",
       name: "BCG",
       showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      dataPoints: 
+	<?php if (array_key_exists('BCG', $rows)) {  
+		echo json_encode($rows['BCG']); 
+	} 
+	?>
+      
    },
    {
       type: "stackedBar",
-      name: "MCV1",
+      name: "Snacks",
       showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      xValueFormatString: "DD, MMM",
+      yValueFormatString: "$#,##0",
+      dataPoints: [
+      ]
    },
    {
       type: "stackedBar",
-      name: "Pol3",
+      name: "Drinks",
       showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      xValueFormatString: "DD, MMM",
+      yValueFormatString: "$#,##0",
+      dataPoints: [
+         { x: new Date(2017, 0, 30), y: 48 },
+         { x: new Date(2017, 0, 31), y: 45 },
+         { x: new Date(2017, 1, 1), y: 41 },
+         { x: new Date(2017, 1, 2), y: 55 },
+         { x: new Date(2017, 1, 3), y: 80 },
+         { x: new Date(2017, 1, 4), y: 85 },
+         { x: new Date(2017, 1, 5), y: 83 }
+      ]
    },
    {
       type: "stackedBar",
-      name: "BCG",
+      name: "Dessert",
       showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      xValueFormatString: "DD, MMM",
+      yValueFormatString: "$#,##0",
+      dataPoints: [
+         { x: new Date(2017, 0, 30), y: 61 },
+         { x: new Date(2017, 0, 31), y: 55 },
+         { x: new Date(2017, 1, 1), y: 61 },
+         { x: new Date(2017, 1, 2), y: 75 },
+         { x: new Date(2017, 1, 3), y: 80 },
+         { x: new Date(2017, 1, 4), y: 85 },
+         { x: new Date(2017, 1, 5), y: 105 }
+      ]
    },
    {
       type: "stackedBar",
-      name: "DTP3",
+      name: "Takeaway",
       showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
-   },
-   {
-      type: "stackedBar",
-      name: "RotaC",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
-   },
-   {
-      type: "stackedBar",
-      name: "Hib3",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
-   },
-   {
-      type: "stackedBar",
-      name: "PAB",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
-   },
-   {
-      type: "stackedBar",
-      name: "HepB3",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
-   },
-   {
-      type: "stackedBar",
-      name: "PCV3",
-      showInLegend: "true",
-      xValueFormatString: "####",
-      yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      xValueFormatString: "DD, MMM",
+      yValueFormatString: "$#,##0",
+      dataPoints: [
+         { x: new Date(2017, 0, 30), y: 52 },
+         { x: new Date(2017, 0, 31), y: 55 },
+         { x: new Date(2017, 1, 1), y: 20 },
+         { x: new Date(2017, 1, 2), y: 35 },
+         { x: new Date(2017, 1, 3), y: 30 },
+         { x: new Date(2017, 1, 4), y: 45 },
+         { x: new Date(2017, 1, 5), y: 25 }
+      ]
    }]
 });
 chart.render();
@@ -215,11 +190,11 @@ function toggleDataSeries(e) {
    }
    chart.render();
 }
+}
 
 </script>
 
 <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
-<div id="ratiochartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="assets/js/canvasjs.min.js"></script>
 </body>
