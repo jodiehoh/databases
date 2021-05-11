@@ -17,7 +17,7 @@ CREATE TABLE CountryInfo (
 	PopulationTotal BIGINT,
 	PopulationDensity DECIMAL(10, 5),
 	PRIMARY KEY(CountryName, Yr),
-	FOREIGN KEY(CountryName) REFERENCES Country(CountryName)
+	FOREIGN KEY(CountryName) REFERENCES Country(CountryName) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Disease (
@@ -41,8 +41,7 @@ CREATE TABLE MortalityRate (
 	Yr INT,
 	MortalityRate DECIMAL(10, 9),
 	PRIMARY KEY(CountryName, Yr), 
-	FOREIGN KEY(CountryName) REFERENCES Country(CountryName) ON DELETE
-CASCADE ON UPDATE CASCADE
+	FOREIGN KEY(CountryName) REFERENCES Country(CountryName) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Vaccination (
