@@ -29,7 +29,7 @@ if (empty($start) or empty($mr) or empty($end)) {
 
 } else {
 
-   echo "<h3 style=\"text-align:center\">".$mr." "." from ".$start." to ".$end."</h3></br>";
+   echo "<h3 style=\"text-align:center\">Total incidences of all diseases in countries with less than ".$mr."% mortality rate from ".$start." to ".$end."</h3></br>";
 
    echo "<br><br>";
    //Prepare a statement that we can later execute. The ?'s are placeholders for

@@ -46,7 +46,7 @@ if (empty($country)) {
          if ($result->num_rows == 0) {
 
             //Result contains no rows at all
-            echo "No population history for this country";
+            echo "No info for ".$country.".";
 
          } else {
 	           $rows = array();

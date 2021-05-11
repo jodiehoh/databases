@@ -56,8 +56,8 @@ if (false) {
 		  $disease = $row[1];
                   array_push($data, $json);
 	       }
-	      echo "<h3 style=\"text-align:center\">".$country." </h3>";
-	      echo "<h3 style=\"text-align:center\">".$disease." </h3>";
+	      echo "<h3 style=\"text-align:center\">Country: ".$country." </h3>";
+	      echo "<h3 style=\"text-align:center\">Disease: ".$disease." </h3>";
 	}
          //We are done with the result set returned above, so free it
          $result->free_result();

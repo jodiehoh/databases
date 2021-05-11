@@ -46,7 +46,7 @@ if (empty($income)) {
          if ($result->num_rows == 0) {
 
             //Result contains no rows at all
-            echo "No info.";
+            echo "No ".$income." countries with 0 diseases.";
 
          } else {
             //Report result set by visiting each row in it

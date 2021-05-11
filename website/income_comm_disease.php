@@ -38,7 +38,7 @@ if (empty($start) or empty($conti) or empty($end) or empty($income) or empty($ca
 
 } else {
 
-   echo "<h3 style=\"text-align:center\">".$income." countries "." from ".$conti." with more than ".$cases." from ".$start." to ".$end."</h3></br>";
+   echo "<h3 style=\"text-align:center\">".$income." countries "." from ".$conti." with more than ".$cases." disease cases from ".$start." to ".$end."</h3></br>";
 
    echo "<br><br>";
    //Prepare a statement that we can later execute. The ?'s are placeholders for
