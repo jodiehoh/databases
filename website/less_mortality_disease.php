@@ -41,8 +41,8 @@ if (empty($start) or empty($mr) or empty($end)) {
       //the variables that follow: 's' means string, 'i' means integer, 'd' means
       //double. E.g., for a statment with 3 ?'s, where middle parameter is an integer
       //and the other two are strings, the first argument included should be "sis".
-      $comm = intval($comm);
-      $stmt->bind_param("iii", $comm, $start, $end);
+      $mr = intval($mr);
+      $stmt->bind_param("iii", $mr, $start, $end);
 
       //Run the actual query
       if ($stmt->execute()) {

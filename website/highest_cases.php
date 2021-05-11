@@ -44,20 +44,21 @@ if (false) {
          } else {
               $rows = array();
               $data = array();
-
-              $country = $row[0];
-              $disease = $row[1];
-        
+	      $country = "";
+	      $disease = "";
               //Report result set by visiting each row in it
                while ($row = $result->fetch_row()) {
                   $obj = NULL;
-                  $obj->label = $row[3];
-                  $obj->y = $row[4];
-                  $json = $obj;
-                  
+                  $obj->label = $row[2];
+                  $obj->y = $row[3];
+		  $json = $obj;
+		  $country = $row[0];
+		  $disease = $row[1];
                   array_push($data, $json);
-                }   
-
+	       }
+	      echo "<h3 style=\"text-align:center\">".$country." </h3>";
+	      echo "<h3 style=\"text-align:center\">".$disease." </h3>";
+	}
          //We are done with the result set returned above, so free it
          $result->free_result();
       
@@ -87,20 +88,18 @@ $conn->close();
 ?>
 
 <script>
-var country = <?php echo $country ?>;
-var diease = <?php echo $disease ?>;
 window.onload = function () {
  
 var chart = new CanvasJS.Chart("chartContainer", {
   title: {
-    text: "Case History for".concat(country, " for ", disease)
+    text: "Case History"
   },
   axisY: {
     title: "Number of Cases"
   },
   data: [{
     type: "line",
-    dataPoints: <?php echo json_encode($data) ?>
+     dataPoints: <?php echo json_encode($data) ?>
   }]
 });
 chart.render();
