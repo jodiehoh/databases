@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+				<!-- Additional Elements -->
+					<section class="wrapper style1 align-center">
+						<div class="inner">
+							<h2>Disease Queries</h2>
+							<p>This page is dedicated to queries involving disease data (different diseases, whether they are communicable or not, their prevelance in different countries, etc.). </p>
+							<div class="index align-left">
+
+								<!-- Text -->
+									<section>
+										<header>
+											<h3>Governments and Diseases</h3>
+										</header>
+										<div class="content">
+											<p>Show the percentage of population in different types of governments that suffered from a certain diseases.</p>
+
+										</div>
+									</section>
+
+								<!-- Form -->
+									<section>
+										<header>
+											<h3>Governments and Diseases Form</h3>
+										</header>
+										<div class="content">
+
+											<form method="post" action="government_disease.php">
+													<label for="count">Governments and Diseases</label>
+													Disease: <input type="text" name="disease1" id="disease1" value="" />
+													<br>
+													Year: <input type="number" name="year1" id="year1" value="" />
+													<input type="submit" name="submit" id="submit" value="Submit" />
+											</form>
+
+										</div>
+									</section>
+
+									<!-- Text -->
+									<section>
+										<header>
+											<h3>Communicable Diseases in Continents</h3>
+										</header>
+										<div class="content">
+											<p>Show the communicable diseases present in different continents in a given time period.</p>
+
+										</div>
+									</section>
+
+								<!-- Form -->
+									<section>
+										<header>
+											<h3>Diseases in Continents Form</h3>
+										</header>
+										<div class="content">
+											<form method="post" action="comm_disease.php">
+												<select id="comm" name="comm">
+															<option value = "Communicable">Communcable</option>
+															<option value = "Non-communicable">Non-communicable</option>
+												</select>
+												<br>
+												Start Year: <input type="number" name="year21" id="year21" value="" />
+												<br>
+												End Year: <input type="number" name="year22" id="year22" value="" />
+												<br>
+												<input type="submit" name="submit" id="submit" value="Submit" />
+											</form>
+									</section>
+
+								<!-- Text -->
+									<section>
+										<header>
+											<h3>Government Top Disease</h3>
+										</header>
+										<div class="content">
+											<p>For a government type, show the country with highest incidences of a disease.</p>
+										</div>
+									</section>
+
+								<!-- Form -->
+									<section>
+										<header>
+											<h3>Government Top Disease Form</h3>
+										</header>
+										<div class="content">
+
+											<form method="post" action="top_government_disease.php">
+													Government: 
+													<input type="text" name="government3" id="government3" value="" /> 
+													<br> Disease: 
+													<input type="text" name="disease3" id="disease3" value="" />
+													<input type="submit" name="submit" id="submit" value="Submit" />
+											</form>
+
+										</div>
+									</section>
+
+									<!-- Text -->
+									<section>
+										<header>
+											<h3>Highest Incidence of a Disease</h3>
+										</header>
+										<div class="content">
+											<p>Show the country and year that had the highest incidence of any disease. Also show the complete case history of the disease in the country.</p>
+										</div>
+									</section>
+
+								<!-- Form -->
+									<section>
+										<header>
+											<h3>Highest Incidence of a Disease Form</h3>
+										</header>
+										<div class="content">
+
+											<form method="post" action="highest_cases.php">
+													<input type="submit" name="submit" id="submit" value="Submit" />
+											</form>
+
+										</div>
+									</section>
+
+
+
+									<!-- Text -->
+									<section>
+										<header>
+											<h3>Countries with No Diseases</h3>
+										</header>
+										<div class="content">
+											<p>Show the coutnries of a particular income type that have no history of any disease.</p>
+										</div>
+									</section>
+
+								<!-- Form -->
+									<section>
+										<header>
+											<h3>Countries with No Diseases</h3>
+										</header>
+										<div class="content">
+
+											<form method="post" action="income_disease.php">
+													Income type: 
+													<input type="text" name="income5" id="income5" value="" />
+													<input type="submit" name="submit" id="submit" value="Submit" />
+											</form>
+
+										</div>
+									</section>
+
+									<!-- Text -->
+									<section>
+										<header>
+											<h3>Diseases by Mortality Rate</h3>
+										</header>
+										<div class="content">
+											<p>Show the total number of disease in all countries whose mortality rate is below a certain threshold in a given period of time.</p>
+
+										</div>
+									</section>
+
+								<!-- Form -->
+									<section>
+										<header>
+											<h3>Diseases by Mortality Rate Form</h3>
+										</header>
+										<div class="content">
+											<form method="post" action="less_mortality_rate.php">
+												Mortality rate less than <input type="number" name="mrpercent" id="mrpercent" value="" />%
+												<br>
+												from year <input type="number" name="year61" id="year61" value="" /> 
+												to <input type="number" name="year62" id="year62" value="" />
+												<input type="submit" name="submit" id="submit" value="Submit" />
+											
+											</form>
+									</section>
+
+									<!-- Text -->
+									<section>
+										<header>
+											<h3>Diseases in Countinents by Income</h3>
+										</header>
+										<div class="content">
+											<p>Show countries of a particular income type in a given continent with certain number of cases in a given time period</p>
+
+										</div>
+									</section>
+
+								<!-- Form -->
+									<section>
+										<header>
+											<h3>Diseases in Countinents by Income</h3>
+										</header>
+										<div class="content">
+											<form method="post" action="income_comm_disease.php">
+												Income type: 
+												<input type="text" name="income7" id="income7" value="" />
+												<br>
+												<input type="text" name="continent7" id="continent7" value="" />
+												<br>
+												More than 
+												<input type="text" name="cases7" id="cases7" value="" />
+												cases
+												<br>
+												<select id="comm" name="comm">
+															<option value = "Communicable">Communcable</option>
+															<option value = "Non-communicable">Non-communicable</option>
+												</select>
+												<br>
+												from year <input type="number" name="year71" id="year71" value="" /> 
+												to <input type="number" name="year72" id="year72" value="" />
+												<br>
+												<input type="submit" name="submit" id="submit" value="Submit" />
+											
+											</form>
+									</section>
+
+
+
+
+
+							</div>
+
+
+						</div>
+					</section>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+		<!-- Note: Only needed for demo purposes. Delete for production sites. -->
+			<script src="assets/js/demo.js"></script>
+
+	</body>
+</html>
