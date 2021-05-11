@@ -49,7 +49,7 @@ if (empty($year) or empty($dis)) {
          if ($result->num_rows == 0) {
 
             //Result contains no rows at all
-            echo "No info.";
+            echo "No info for ".$dis.".";
 
          } else {
                $rows = array();

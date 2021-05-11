@@ -29,7 +29,14 @@ if (empty($start) or empty($comm) or empty($end)) {
 
 } else {
 
-   echo "<h3 style=\"text-align:center\">".$comm." "." from ".$start." to ".$end."</h3></br>";
+  if(comm == 1) {
+    echo "<h3 style=\"text-align:center\">Communicable diseases </h3>";
+  }
+  else {
+    echo "<h3 style=\"text-align:center\">Non-communicable diseases </h3>";
+  }
+  
+  echo "<h3 style=\"text-align:center\">from ".$start." to ".$end."</h3></br>";
 
    echo "<br><br>";
    //Prepare a statement that we can later execute. The ?'s are placeholders for
