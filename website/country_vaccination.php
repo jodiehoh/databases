@@ -92,72 +92,108 @@ $conn->close();
 ?>
 
 <script>
+window.onload = function () {
 
-   var chart = null;
-   var dataPoints = [];
-
-   window.onload = function() {
-
-   chart = new CanvasJS.Chart("chartContainer", {
-      animationEnabled: true,
-      theme: "light2",
-      title: {
-         text: "Total Population"
+var chart = new CanvasJS.Chart("chartContainer", {
+   animationEnabled: true,
+   title:{
+      text: "Evening Sales in a Restaurant"
    },
-      axisX: {
-        valueFormatString: "####",
-        title: "Year",
-        titleFontSize: 24
+   axisX: {
+      valueFormatString: "DDD"
    },
-      axisY: {
-         title: "Population (thousands)",
-         titleFontSize: 24
-      },
-      data: [{
-         type: "column",
-         dataPoints: <?php echo json_encode($rows) ?>
-      }]
-   });
-
-    ratio_chart = new CanvasJS.Chart("ratiochartContainer", {
-      animationEnabled: true,
-      theme: "light2",
-      title: {
-         text: "Female to Male Ratio"
+   axisY: {
+      prefix: "$"
    },
-      axisX: {
-        valueFormatString: "####",
-        title: "Year",
-        titleFontSize: 24
+   toolTip: {
+      shared: true
    },
-      axisY: {
-         valueFormatString:"##.##",
-         title: "Female to Male Ratio",
-         titleFontSize: 24
-      },
-      data: [{
-         type: "column",
-         dataPoints: <?php echo json_encode($ratios) ?>
-      }]
-   });
+   legend:{
+      cursor: "pointer",
+      itemclick: toggleDataSeries
+   },
+   data: [{
+      type: "stackedBar",
+      name: "Meals",
+      showInLegend: "true",
+      xValueFormatString: "DD, MMM",
+      yValueFormatString: "$#,##0",
+      dataPoints: [
+      ]
+   },
+   {
+      type: "stackedBar",
+      name: "Snacks",
+      showInLegend: "true",
+      xValueFormatString: "DD, MMM",
+      yValueFormatString: "$#,##0",
+      dataPoints: [
+      ]
+   },
+   {
+      type: "stackedBar",
+      name: "Drinks",
+      showInLegend: "true",
+      xValueFormatString: "DD, MMM",
+      yValueFormatString: "$#,##0",
+      dataPoints: [
+         { x: new Date(2017, 0, 30), y: 48 },
+         { x: new Date(2017, 0, 31), y: 45 },
+         { x: new Date(2017, 1, 1), y: 41 },
+         { x: new Date(2017, 1, 2), y: 55 },
+         { x: new Date(2017, 1, 3), y: 80 },
+         { x: new Date(2017, 1, 4), y: 85 },
+         { x: new Date(2017, 1, 5), y: 83 }
+      ]
+   },
+   {
+      type: "stackedBar",
+      name: "Dessert",
+      showInLegend: "true",
+      xValueFormatString: "DD, MMM",
+      yValueFormatString: "$#,##0",
+      dataPoints: [
+         { x: new Date(2017, 0, 30), y: 61 },
+         { x: new Date(2017, 0, 31), y: 55 },
+         { x: new Date(2017, 1, 1), y: 61 },
+         { x: new Date(2017, 1, 2), y: 75 },
+         { x: new Date(2017, 1, 3), y: 80 },
+         { x: new Date(2017, 1, 4), y: 85 },
+         { x: new Date(2017, 1, 5), y: 105 }
+      ]
+   },
+   {
+      type: "stackedBar",
+      name: "Takeaway",
+      showInLegend: "true",
+      xValueFormatString: "DD, MMM",
+      yValueFormatString: "$#,##0",
+      dataPoints: [
+         { x: new Date(2017, 0, 30), y: 52 },
+         { x: new Date(2017, 0, 31), y: 55 },
+         { x: new Date(2017, 1, 1), y: 20 },
+         { x: new Date(2017, 1, 2), y: 35 },
+         { x: new Date(2017, 1, 3), y: 30 },
+         { x: new Date(2017, 1, 4), y: 45 },
+         { x: new Date(2017, 1, 5), y: 25 }
+      ]
+   }]
+});
+chart.render();
 
-
-   $.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales.json?callback=?", callback);
+function toggleDataSeries(e) {
+   if(typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+      e.dataSeries.visible = false;
    }
-   function callback(data) {
-      for (var i = 0; i < data.dps.length; i++) {
-         dataPoints.push({
-            x: new Date(data.dps[i].date),
-            y: data.dps[i].units
-         });
-      }
-      chart.render();
+   else {
+      e.dataSeries.visible = true;
    }
+   chart.render();
+}
 
 </script>
 
 <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
-<div id="ratiochartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="assets/js/canvasjs.min.js"></script>
 </body>
