@@ -14,8 +14,8 @@ include 'open.php';
 if (isset($_POST['top'])) {
     $top = $_POST['top'];
 }
-if (isset($_POST['continent'])) {
-    $continent = $_POST['continent'];
+if (isset($_POST['continent7'])) {
+    $continent = $_POST['continent7'];
 }
 if (isset($_POST['year'])) {
     $year = $_POST['year'];
@@ -24,7 +24,7 @@ if (isset($_POST['year'])) {
 echo "<h2 style=\"text-align:center\">Highest Mortality Rate</h2>";
 
 //Determine if any input was actually collected
-if (empty($start) or empty($mr) or empty($end)) {
+if (empty($top) or empty($continent) or empty($year)) {
    echo "empty <br><br>";
 
 } else {
