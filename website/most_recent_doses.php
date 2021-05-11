@@ -11,31 +11,24 @@ include 'open.php';
 //ini_set('error_reporting', E_ALL);
 //ini_set('display_errors', true);
 
-if (isset($_POST['country'])) {
-    $country = $_POST['country'];
-}
-
 
 echo "<h2 style=\"text-align:center\">Population History </h2>";
 
 //Determine if any input was actually collected
-if (empty($country)) {
+if (false) {
    echo "empty <br><br>";
 
 } else {
 
-   echo "<h3 style=\"text-align:center\">".$country."</h3></br>";
-
    //Prepare a statement that we can later execute. The ?'s are placeholders for
    //parameters whose values we will set before we run the query.
-   if ($stmt = $conn->prepare("CALL PopulationHistory(?)")) {
+   if ($stmt = $conn->prepare("CALL MostRecentDoses()")) {
 
       //Attach the ? in prepared statements to variables (even if those variables
       //don't hold the values we want yet).  First parameter is a list of types of
       //the variables that follow: 's' means string, 'i' means integer, 'd' means
       //double. E.g., for a statment with 3 ?'s, where middle parameter is an integer
       //and the other two are strings, the first argument included should be "sis".
-      $stmt->bind_param("s", $country);
 
       //Run the actual query
       if ($stmt->execute()) {
@@ -71,7 +64,7 @@ if (empty($country)) {
 
              array_push($data, $outer);
          }
-               
+          print_r(json_encode($data));     
          }   
 
          //We are done with the result set returned above, so free it
@@ -113,15 +106,9 @@ var chart = new CanvasJS.Chart("chartContainer", {
   axisY: {
     title: "Pressure (in mmHg)",
     gridThickness: 0
-  },
-  data: [{
-    type: "rangeArea",
-    xValueType: "dateTime",
-    xValueFormatString: "hh:MM TT",
-    yValueFormatString: "#,##0 mmHg",
-    toolTipContent: "{x}<br><b>Systolic:</b> {y[0]}<br><b>Diastolic:</b> {y[1]}",
-    dataPoints: <?php echo json_encode($data) ?>
-  }]
+},
+	data: <?php echo json_encode($data) ?>
+  
 });
  
 chart.render();
