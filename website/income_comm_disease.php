@@ -51,7 +51,7 @@ if (empty($start) or empty($conti) or empty($end) or empty($income) or empty($ca
       //double. E.g., for a statment with 3 ?'s, where middle parameter is an integer
       //and the other two are strings, the first argument included should be "sis".
       $comm = intval($comm);
-      $stmt->bind_param("ssiiii", $income, $continent, $cases, $comm, $start, $end);
+      $stmt->bind_param("ssiiii", $income, $conti, $cases, $comm, $start, $end);
 
       //Run the actual query
       if ($stmt->execute()) {
