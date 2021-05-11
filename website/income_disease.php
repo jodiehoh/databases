@@ -35,7 +35,7 @@ if (empty($income)) {
       //the variables that follow: 's' means string, 'i' means integer, 'd' means
       //double. E.g., for a statment with 3 ?'s, where middle parameter is an integer
       //and the other two are strings, the first argument included should be "sis".
-      $stmt->bind_param("s", income);
+      $stmt->bind_param("s", $income);
 
       //Run the actual query
       if ($stmt->execute()) {
@@ -53,7 +53,7 @@ if (empty($income)) {
             <br><br>
             $index = 1;
             foreach($result as $row) {
-              echo index.". ".row["CountryName"]."<br>";
+              echo $index.". ".$row["CountryName"]."<br>";
               $index = $index + 1;
             }
          }   
@@ -87,71 +87,6 @@ $conn->close();
 ?>
 
 <script>
-
-   var chart = null;
-   var dataPoints = [];
-
-   var ratio_chart = null;
-
-   window.onload = function() {
-
-   chart = new CanvasJS.Chart("chartContainer", {
-      animationEnabled: true,
-      theme: "light2",
-      title: {
-         text: "Total Population"
-   },
-     axisX: {
-       valueFormatString: "####",
-      title: "Year",
-       titleFontSize: 24
-   },
-      axisY: {
-         title: "Population (thousands)",
-         titleFontSize: 24
-      },
-      data: [{
-         type: "column",
-         dataPoints: <?php echo json_encode($rows) ?>
-      }]
-   });
-
-    ratio_chart = new CanvasJS.Chart("ratiochartContainer", {
-      animationEnabled: true,
-      theme: "light2",
-      title: {
-         text: "Female to Male Ratio"
-   },
-      axisX: {
-        valueFormatString: "####",
-        title: "Year",
-        titleFontSize: 24
-   },
-      axisY: {
-         valueFormatString:"##.##",
-         title: "Female to Male Ratio",
-         titleFontSize: 24
-      },
-      data: [{
-         type: "column",
-         dataPoints: <?php echo json_encode($ratios) ?>
-      }]
-   });
-
-
-  $.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales.json?callback=?", callback);
-   }
-   function callback(data) {
-      for (var i = 0; i < data.dps.length; i++) {
-         dataPoints.push({
-            x: new Date(data.dps[i].date),
-            y: data.dps[i].units
-         });
-      }
-      chart.render();
-      ratio_chart.render();
-   }
-
 </script>
 
 <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
