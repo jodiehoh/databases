@@ -71,12 +71,6 @@ if (empty($country)) {
 
              array_push($data, $outer);
          }
-
-         print_r($data);
-
-
-
-
 	 }   
 
          //We are done with the result set returned above, so free it
@@ -116,7 +110,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       text: "Country Vaccination"
    },
    axisX: {
-      title: "Year"
+      title: "Year",
       valueFormatString: "####"
    },
    axisY: {
@@ -129,33 +123,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       cursor: "pointer",
       itemclick: toggleDataSeries
    },
-   data: [{
-      type: "stackedBar",
-      name: "BCG",
-      showInLegend: "true",
-      dataPoints: 
-      	<?php if (array_key_exists('BCG', $rows)) {  
-      		echo json_encode($rows['BCG']); 
-      	} 
-      	?>
-      
-   },
-   {
-      type: "stackedBar",
-      name: "Takeaway",
-      showInLegend: "true",
-      xValueFormatString: "DD, MMM",
-      yValueFormatString: "$#,##0",
-      dataPoints: [
-         { x: new Date(2017, 0, 30), y: 52 },
-         { x: new Date(2017, 0, 31), y: 55 },
-         { x: new Date(2017, 1, 1), y: 20 },
-         { x: new Date(2017, 1, 2), y: 35 },
-         { x: new Date(2017, 1, 3), y: 30 },
-         { x: new Date(2017, 1, 4), y: 45 },
-         { x: new Date(2017, 1, 5), y: 25 }
-      ]
-   }]
+	   data: <?php echo json_encode($data) ?>
 });
 chart.render();
 
