@@ -11,8 +11,8 @@ include 'open.php';
 //ini_set('error_reporting', E_ALL);
 //ini_set('display_errors', true);
 
-if (isset($_POST['income'])) {
-    $income = $_POST['income'];
+if (isset($_POST['income5'])) {
+    $income = $_POST['income5'];
 }
 
 
