@@ -31,7 +31,7 @@ if (empty($start) or empty($income)) {
    echo "<br><br>";
    //Prepare a statement that we can later execute. The ?'s are placeholders for
    //parameters whose values we will set before we run the query.
-   if ($stmt = $conn->prepare("CALL LetterIncomeMortality(?)")) {
+   if ($stmt = $conn->prepare("CALL LetterIncomeMortality(?, ?)")) {
 
       //Attach the ? in prepared statements to variables (even if those variables
       //don't hold the values we want yet).  First parameter is a list of types of
@@ -53,9 +53,10 @@ if (empty($start) or empty($income)) {
 
          } else {
 
-            $row = $result->fetch_row();
-            echo "Country: ".row["CountryName"]."<br>";
-            echo "Mortality rate: ".row["MortalityRate"];
+		 $row = $result->fetch_row();
+		 $value = floatval($row[1]) * 100;
+            echo "<p style=\"text-align:center\"> Country: ".$row[0]."<br>";
+            echo "Mortality rate: ".$value."% </p>";
 
          }   
 

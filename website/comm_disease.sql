@@ -9,10 +9,9 @@ CREATE PROCEDURE CommunicableDisease(IN comm BOOLEAN, IN year1 INT, IN year2 INT
 BEGIN	
 
 	
-	SELECT C.Continent, DISTINCT D.DiseaseName
+	SELECT DISTINCT C.Continent, D.DiseaseName
 	FROM Country AS C, Disease AS D, HasDisease AS H
-	WHERE C.CountryName = H.CountryName, D.DiseaseName = H.DiseaseName AND H.Yr >= year1 AND H.Yr <= year2 AND D.isCommunicable = comm;
-	GROUP BY C.Continent;
+	WHERE C.CountryName = H.CountryName AND  D.DiseaseName = H.DiseaseName AND H.Yr >= year1 AND H.Yr <= year2 AND D.isCommunicable = comm;
 
 END; //
 

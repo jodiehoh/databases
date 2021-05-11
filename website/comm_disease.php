@@ -59,8 +59,7 @@ if (empty($start) or empty($comm) or empty($end)) {
               $rows = array();
               while ($row = $result->fetch_row()) {
                 $rows[$row[0]][] = $row[1];
-              } 
-      
+	      } 
               echo "<table border =\"2px solid black\">";
               echo "<tr><td>Country</td><td>Diseases</td></tr>";
 
@@ -68,7 +67,7 @@ if (empty($start) or empty($comm) or empty($end)) {
               // $arr[3] will be updated with each value from $arr...
                 echo "<tr>";
                 echo "<td>".$key."</td>";
-                echo "<td>".implode(" ", $value)."</td>";
+                echo "<td>".implode(", ", $value)."</td>";
                 echo "</tr>";
               }
               echo "</table>";
