@@ -9,10 +9,12 @@ DROP PROCEDURE IF EXISTS LetterIncomeMortality //
 
 CREATE PROCEDURE LetterIncomeMortality(IN letter VARCHAR(255), IN incomeType VARCHAR(255))
 BEGIN
-	
-	SELECT DISTINCT M.CountryName, M.MortalityRate
-	FROM MortalityRate AS M, Country AS C
-	WHERE C.CountryName = M.CountryName AND C.IncomeGroup = incomeType AND M.MortalityRate = (SELECT MAX(MortalityRate) FROM MortalityRate WHERE CountryName LIKE LOWER(CONCAT(letter,'%')));
+
+SELECT DISTINCT M.CountryName, M.MortalityRate
+FROM MortalityRate AS M, Country AS C
+WHERE C.CountryName = M.CountryName AND M.MortalityRate = (SELECT MAX(MortalityRate)
+FROM MortalityRate AS M, Country AS C
+WHERE M.CountryName LIKE LOWER(CONCAT(letter,'%')) AND C.IncomeGroup = incomeType AND M.CountryName = C.CountryName);
 
 END; //
 

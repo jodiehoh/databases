@@ -91,8 +91,6 @@ $conn->close();
 <script>
 </script>
 
-<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
-<div id="ratiochartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="assets/js/canvasjs.min.js"></script>
 </body>

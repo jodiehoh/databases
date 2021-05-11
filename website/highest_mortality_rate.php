@@ -14,8 +14,8 @@ include 'open.php';
 if (isset($_POST['top'])) {
     $top = $_POST['top'];
 }
-if (isset($_POST['continent7'])) {
-    $continent = $_POST['continent7'];
+if (isset($_POST['continent'])) {
+    $continent = $_POST['continent'];
 }
 if (isset($_POST['year'])) {
     $year = $_POST['year'];
@@ -58,10 +58,11 @@ if (empty($top) or empty($continent) or empty($year)) {
               $rows = array();
               echo "<table border =\"2px solid black\">";
               echo "<tr><td>Country</td><td>Mortality Rate</td></tr>";
-              while ($row = $result->fetch_row()) {
+	      while ($row = $result->fetch_row()) {
+		$value = $row[1] * 100;
                 echo "<tr>";
                 echo "<td>".$row[0]."</td>";
-                echo "<td>".$row[1]."</td>";
+                echo "<td>".$value."%</td>";
                 echo "</tr>";
 	         } 
               echo "</table>";
