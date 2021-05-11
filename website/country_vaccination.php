@@ -9,8 +9,8 @@ include 'open.php';
 
 //Override the PHP configuration file to display all errors
 //This is useful during development but generally disabled before release
-//ini_set('error_reporting', E_ALL);
-//ini_set('display_errors', true);
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', true);
 
 if (isset($_POST['country'])) {
     $country = $_POST['country'];
@@ -50,7 +50,6 @@ if (empty($country)) {
             echo "No vaccination history for this country";
 
          } else {
-               $vaccine_data = new \Ds\Map();
             //Report result set by visiting each row in it
                while ($row = $result->fetch_row()) {
 
@@ -60,17 +59,6 @@ if (empty($country)) {
                   $obj->y = $row[2];
 
                   $json = $obj;
-
-                  if ($vaccine_data->hasKey($row[1])) {
-                     $temp = $vaccine_data->get($row[1]);
-
-                     array_push($temp, $json)
-                     $vaccine_data[$row[1]]->put($temp);
-                  }
-                  else {
-                     $vaccine_data[$row[1]]->put($json);
-                  }
-               } 
          }	 
 
          //We are done with the result set returned above, so free it
@@ -129,7 +117,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       showInLegend: "true",
       xValueFormatString: "####",
       yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      dataPoints: []
    },
    {
       type: "stackedBar",
@@ -137,7 +125,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       showInLegend: "true",
       xValueFormatString: "####",
       yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      dataPoints: [] 
    },
    {
       type: "stackedBar",
@@ -145,7 +133,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       showInLegend: "true",
       xValueFormatString: "####",
       yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      dataPoints: [] 
    },
    {
       type: "stackedBar",
@@ -153,7 +141,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       showInLegend: "true",
       xValueFormatString: "####",
       yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      dataPoints: [] 
    },
    {
       type: "stackedBar",
@@ -161,7 +149,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       showInLegend: "true",
       xValueFormatString: "####",
       yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      dataPoints: [] 
    },
    {
       type: "stackedBar",
@@ -169,7 +157,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       showInLegend: "true",
       xValueFormatString: "####",
       yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      dataPoints: [] 
    },
    {
       type: "stackedBar",
@@ -177,7 +165,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       showInLegend: "true",
       xValueFormatString: "####",
       yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      dataPoints: [] 
    },
    {
       type: "stackedBar",
@@ -185,7 +173,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       showInLegend: "true",
       xValueFormatString: "####",
       yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      dataPoints: [] 
    },
    {
       type: "stackedBar",
@@ -193,7 +181,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       showInLegend: "true",
       xValueFormatString: "####",
       yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      dataPoints: [] 
    },
    {
       type: "stackedBar",
@@ -201,7 +189,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
       showInLegend: "true",
       xValueFormatString: "####",
       yValueFormatString: "###",
-      dataPoints: <?php echo json_encode($vaccine_data->get("BCG")) ?>
+      dataPoints: [] 
    }]
 });
 chart.render();
@@ -219,7 +207,6 @@ function toggleDataSeries(e) {
 </script>
 
 <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
-<div id="ratiochartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="assets/js/canvasjs.min.js"></script>
 </body>
