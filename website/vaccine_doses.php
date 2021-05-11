@@ -50,6 +50,12 @@ if (empty($count)) {
 
          } else {
             //Report result set by visiting each row in it
+
+            while ($row = $result->fetch_row()) {
+                  
+                  echo $row[0].$row[1];
+               } 
+            /*
                $row = $result->fetch_row();
                echo "<b>".row[0].": </b>".row[1].", ";
                $prev = $row;
@@ -65,6 +71,7 @@ if (empty($count)) {
                   }
 
                } 
+               */
          }	 
 
          //We are done with the result set returned above, so free it
@@ -95,76 +102,6 @@ if (empty($count)) {
 $conn->close();
 ?>
 
-<script>
-
-   var chart = null;
-   var dataPoints = [];
-
-   var ratio_chart = null;
-
-   window.onload = function() {
-
-   chart = new CanvasJS.Chart("chartContainer", {
-      animationEnabled: true,
-      theme: "light2",
-      title: {
-         text: "Total Population"
-   },
-	   axisX: {
-	     valueFormatString: "####",
-   	  title: "Year",
-	     titleFontSize: 24
-   },
-      axisY: {
-         title: "Population (thousands)",
-         titleFontSize: 24
-      },
-      data: [{
-         type: "column",
-         dataPoints: <?php echo json_encode($rows) ?>
-      }]
-   });
-
-    ratio_chart = new CanvasJS.Chart("ratiochartContainer", {
-      animationEnabled: true,
-      theme: "light2",
-      title: {
-         text: "Female to Male Ratio"
-   },
-      axisX: {
-        valueFormatString: "####",
-        title: "Year",
-        titleFontSize: 24
-   },
-      axisY: {
-         valueFormatString:"##.##",
-         title: "Female to Male Ratio",
-         titleFontSize: 24
-      },
-      data: [{
-         type: "column",
-         dataPoints: <?php echo json_encode($ratios) ?>
-      }]
-   });
-
-
-	$.getJSON("https://canvasjs.com/data/gallery/javascript/daily-sales.json?callback=?", callback);
-   }
-   function callback(data) {
-      for (var i = 0; i < data.dps.length; i++) {
-         dataPoints.push({
-            x: new Date(data.dps[i].date),
-            y: data.dps[i].units
-         });
-      }
-      chart.render();
-      ratio_chart.render();
-   }
-
-</script>
-
-<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
-<div id="ratiochartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="assets/js/canvasjs.min.js"></script>
 </body>
