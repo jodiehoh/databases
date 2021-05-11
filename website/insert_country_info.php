@@ -67,7 +67,6 @@ if (empty($country) or empty($year) or empty($male) or empty($female) or empty($
          }
          
 
-         }   
 
          //We are done with the result set returned above, so free it
          $result->free_result();
