@@ -93,11 +93,11 @@ var chart = new CanvasJS.Chart("chartContainer", {
   },
   theme: "light1",
   animationEnabled: true,
-  axisY: {
-    title: "Vaccine",
+  axisX: {
+  	title: "Vaccine",
+	interval: 1,
   },
   axisY: {
-    interval: 1,
     title: "Number of Doses",
     includeZero: false
   },
@@ -105,7 +105,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
     {
       type: "rangeColumn",
       yValueFormatString: "##",
-      toolTipContent: "{label}<br>Minimum: {y[0]}<br>Maximum: {y[1]}",
+      toolTipContent: "{label}<br>Starting Dose: {y[1]}<br>Recent Dose: {y[0]}",
       dataPoints: <?php echo json_encode($data, JSON_NUMERIC_CHECK); ?>
     }
   ]
@@ -116,7 +116,7 @@ chart.render();
 }
 </script>
 
-<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+<div id="chartContainer" style="height: 370px; max-width: 1500px; margin: 0px auto;"></div>
 <div id="ratiochartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="assets/js/canvasjs.min.js"></script>
