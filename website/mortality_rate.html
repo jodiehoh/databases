@@ -66,8 +66,10 @@
 										<div class="content">
 											<form method="post" action="less_mortality_rate.php">
 												Mortality rate less than <input type="number" name="mrpercent" id="mrpercent" value="" />%
-												from years <input type="number" name="startYear" id="startYear" value="" /> to
-												<input type="number" name="endYear" id="endYear" value="" />
+												<br>
+												from year <input type="number" name="year61" id="year61" value="" /> 
+												<br>
+												to <input type="number" name="year62" id="year62" value="" />
 												<input type="submit" name="submit" id="submit" value="Submit" />
 											
 											</form>
@@ -91,30 +93,16 @@
 										</header>
 										<div class="content">
 
-											<form method="post" action="most_recent_doses.php">
+											<form method="post" action="letter_income_mortality.php">
 													Starting sequence: 
 													<input type="text" name="startSeq" id="startSeq" value="" /> 
 													<br> Income type: 
-													<input type="text" name="income" id="income" value="Submit" />
-											</form>
-
-										</div>
-									</section>
-
-								<!-- Form -->
-									<section>
-										<header>
-											<h3>Most Recent Vaccine Doses vs. Starting Doses Count Form</h3>
-										</header>
-										<div class="content">
-
-											<form method="post" action="continent_vaccine_disease.php">
+													<input type="text" name="income" id="income" value="" />
 													<input type="submit" name="submit" id="submit" value="Submit" />
 											</form>
 
 										</div>
 									</section>
-
 							</div>
 
 
