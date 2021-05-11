@@ -48,7 +48,9 @@ if (false) {
         
         //Report result set by visiting each row in it
                while ($row = $result->fetch_row()) {
-                  $vaccine = NULL;
+
+                  if ($row[0] != "Continent") {
+                    $vaccine = NULL;
                   $vaccine->label = $row[0];
                   $vaccine->y = intval($row[2]);
 
@@ -59,6 +61,8 @@ if (false) {
                   $disease->y = intval($row[1]);
 
                   array_push($diseases, $disease);
+                  }
+                  
             } 
 
 
