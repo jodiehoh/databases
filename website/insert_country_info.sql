@@ -13,11 +13,12 @@ BEGIN
 	IF NOT EXISTS(SELECT * FROM CountryInfo WHERE CountryName = cntry AND Yr = yer) THEN	       
 		
 		IF NOT EXISTS(SELECT * FROM Country WHERE CountryName = cntry) THEN 
-			INSERT INTO Country (CountryName) VALUES (cntry);
+			INSERT INTO Country (Continent, CountryName, Government, CountryCode, Region, IncomeGroup) 
+			VALUES (" ", cntry, " ", " ", " ", " ");
 		END IF;
 		
 		INSERT INTO CountryInfo (CountryName, Yr, PopulationMale, PopulationFemale, PopulationTotal, PopulationDensity) 
-		VALUES (cntry, yr, popMale, popFemale, popMale + popFemale, popDensity);
+		VALUES (cntry, yer, popMale, popFemale, popMale + popFemale, popDensity);
 	
 	END IF;
 

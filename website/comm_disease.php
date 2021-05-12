@@ -68,7 +68,7 @@ if (empty($start) or empty($comm) or empty($end)) {
                 $rows[$row[0]][] = $row[1];
 	      } 
               echo "<table border =\"2px solid black\">";
-              echo "<tr><td>Country</td><td>Diseases</td></tr>";
+              echo "<tr><td><b>Continent</b></td><td><b>Diseases</b></td></tr>";
 
               foreach ($rows as $key => $value) {
               // $arr[3] will be updated with each value from $arr...
