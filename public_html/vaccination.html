@@ -23,7 +23,7 @@
 											<h3>Vaccine Count</h3>
 										</header>
 										<div class="content">
-											<p>Show all the countires in which that equal or exceed given vaccine count.</p>
+											<p>Show all the countires in which they equal or exceed given vaccine count.</p>
 
 										</div>
 									</section>
@@ -37,7 +37,7 @@
 
 											<form method="post" action="vaccine_doses.php">
 													Vaccine doses:
-													<input type="number" name="count" id="count" value="" />
+													<input type="number" min=0 name="count" id="count" value="" />
 													<br>
 													<input type="submit" name="submit" id="submit" value="Submit" />
 
@@ -52,7 +52,8 @@
 											<h3>Maxiumum Doses</h3>
 										</header>
 										<div class="content">
-											<p>Show for the vaccination with maximum doses in a given country.</p>
+											<p>Show for which given country the vaccination and the maximum doses delivered for that vaccination.</p>
+
 										</div>
 									</section>
 
@@ -77,7 +78,7 @@
 											<h3> Most Recent Vaccine Doses vs. Starting Doses</h3>
 										</header>
 										<div class="content">
-											<p>Show all the countires in which current doses are at most the starting doses for any vaccine and in any given year.</p>
+											<p>Show all the countires whose current doses are less than the starting doses for any vaccine and in any given year.</p>
 
 										</div>
 									</section>

@@ -1,5 +1,5 @@
 <head>
-   <title>Letter Income Mortality</title>
+   <title>Starting Sequence-Income-Mortality</title>
 </head>
 <body>
 <link rel="stylesheet" href="assets/css/main.css" />

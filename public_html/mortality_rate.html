@@ -36,7 +36,7 @@
 										<div class="content">
 
 											<form method="post" action="highest_mortality_rate.php">
-													Top <input type="number" name="top" id="top" value="" /> countries
+													Top <input type="number" min=0 name="top" id="top" value="" /> countries
 													<br>
 													Continent: 
 													<select id="continent" name="continent">
@@ -49,7 +49,7 @@
 													</select>
 													<br>
 													Year:
-													<input type="number" name="year" id="year" value="" />
+													<input type="number" min=1950 max=2100 name="year" id="year" value="" />
 													<br>
 													<input type="submit" name="submit" id="submit" value="Submit" />
 
@@ -76,10 +76,10 @@
 										</header>
 										<div class="content">
 											<form method="post" action="less_mortality_disease.php">
-												Mortality rate less than <input type="number" name="mrpercent" id="mrpercent" value="" />%
+												Mortality rate less than <input type="number" min=0  name="mrpercent" id="mrpercent" value="" />%
 												<br>
-												from year <input type="number" name="year61" id="year61" value="" /> 
-												to <input type="number" name="year62" id="year62" value="" />
+												from year <input type="number" min=1950 max=2100 name="year61" id="year61" value="" /> 
+												to <input type="number" name="year62" id="year62" min=1950 max=2100  value="" />
 												<br>
 												<input type="submit" name="submit" id="submit" value="Submit" />
 											

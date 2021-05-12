@@ -24,7 +24,7 @@ if (empty($count)) {
 
 } else {
 
-   echo "<h3 style=\"text-align:center\">".$count."+ Vaccine Doses</h3></br>";
+   echo "<h3 style=\"text-align:center\">".$count."</h3></br>";
 
    //Prepare a statement that we can later execute. The ?'s are placeholders for
    //parameters whose values we will set before we run the query.
@@ -46,7 +46,7 @@ if (empty($count)) {
          if ($result->num_rows == 0) {
 
             //Result contains no rows at all
-            echo "No country with more than ".$count." vaccine doses.";
+            echo "No information found";
 
          } else {
             //Report result set by visiting each row in it
@@ -58,7 +58,7 @@ if (empty($count)) {
 
 	    
 	    echo "<table border =\"2px solid black\">";
-            echo "<tr><td><b>Country</b></td><td><b>Vaccines</b></td></tr>";
+            echo "<tr><td>Country</td><td>Vaccines</td></tr>";
 
 	    foreach ($rows as $key => $value) {
              // $arr[3] will be updated with each value from $arr...
