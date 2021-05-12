@@ -57,15 +57,14 @@ if (empty($start) or empty($mr) or empty($end)) {
 
          } else {
               $rows = array();
-              echo "<table border =\"2px solid black\">";
-              echo "<tr><td>Country</td><td>Number of Diseases</td></tr>";
+              $data = array();
+
               while ($row = $result->fetch_row()) {
-                echo "<tr>";
-                echo "<td>".$row[0]."</td>";
-                echo "<td>".$row[1]."</td>";
-                echo "</tr>";
-	         } 
-              echo "</table>";
+                  $obj = NULL;
+                  $obj->label = $row[0];
+                  $obj->y = $row[1];
+                  array_push($data, $json);
+         }
 
               
               
@@ -100,6 +99,33 @@ $conn->close();
 ?>
 
 <script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+animationEnabled: true,
+
+title:{
+  text:"Diseases by Country"
+},
+axisX:{
+  interval: 1
+},
+axisY2:{
+  interlacedColor: "rgba(1,77,101,.2)",
+  gridColor: "rgba(1,77,101,.1)",
+  title: "Number of Diseases"
+},
+data: [{
+  type: "bar",
+  name: "diseases",
+  axisYType: "secondary",
+  color: "#014D65",
+  dataPoints: <?php echo json_encode($data) ?>
+}]
+});
+chart.render();
+
+}
 </script>
 
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
