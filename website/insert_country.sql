@@ -13,7 +13,7 @@ BEGIN
 	IF NOT EXISTS(SELECT * FROM Country WHERE CountryName = cntry) THEN	       
 		
 		INSERT INTO Country (Continent, CountryName, Government, CountryCode, Region, IncomeGroup) 
-		VALUES (conti, cntry, govt, rgn, incomeType);
+		VALUES (conti, cntry, govt, " ",  rgn, incomeType);
 	
 	END IF;
 

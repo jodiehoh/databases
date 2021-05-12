@@ -59,34 +59,34 @@ CREATE TABLE VaccinationDrive (
 );
 
 
-LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring 2021/Databases/databases/data/Country.csv' INTO TABLE Country 
+LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring_2021/Databases/databases/data/Country.csv' INTO TABLE Country 
         FIELDS OPTIONALLY ENCLOSED BY '"'
         TERMINATED BY ',' 
         LINES TERMINATED BY '\r\n'
         (Continent,CountryName,Government,CountryCode,Region,IncomeGroup);
         
-LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring 2021/Databases/databases/data/Country_Info.csv' INTO TABLE CountryInfo
+LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring_2021/Databases/databases/data/Country_Info.csv' INTO TABLE CountryInfo
         FIELDS OPTIONALLY ENCLOSED BY '"'
         TERMINATED BY ',' 
         LINES TERMINATED BY '\r\n'
         IGNORE 1 LINES 
         (CountryName,Yr,PopulationMale,PopulationFemale,PopulationTotal,PopulationDensity);
 
-LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring 2021/Databases/databases/data/Disease.csv' INTO TABLE Disease
+LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring_2021/Databases/databases/data/Disease.csv' INTO TABLE Disease
         FIELDS OPTIONALLY ENCLOSED BY '"'
         TERMINATED BY ',' 
         LINES TERMINATED BY '\r\n'
         IGNORE 1 LINES 
         (DiseaseName,isCommunicable);
 
-LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring 2021/Databases/databases/data/Has-Disease.csv' INTO TABLE HasDisease
+LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring_2021/Databases/databases/data/Has-Disease.csv' INTO TABLE HasDisease
         FIELDS OPTIONALLY ENCLOSED BY '"'
         TERMINATED BY ',' 
         LINES TERMINATED BY '\r\n'
         IGNORE 1 LINES 
         (CountryName,DiseaseName,Yr,Cases);
 
-LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring 2021/Databases/databases/data/Mortality-Rate.csv' INTO TABLE MortalityRate
+LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring_2021/Databases/databases/data/Mortality-Rate.csv' INTO TABLE MortalityRate
         FIELDS OPTIONALLY ENCLOSED BY '"'
         TERMINATED BY ',' 
         LINES TERMINATED BY '\r\n'
@@ -94,14 +94,14 @@ LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring 2021/Databases/databa
         (CountryName,Yr,@vMortalityRate)
         SET MortalityRate = NULLIF(@vMortalityRate,'');
 
-LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring 2021/Databases/databases/data/Vaccination.csv' INTO TABLE Vaccination
+LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring_2021/Databases/databases/data/Vaccination.csv' INTO TABLE Vaccination
         FIELDS OPTIONALLY ENCLOSED BY '"'
         TERMINATED BY ',' 
         LINES TERMINATED BY '\r\n'
         IGNORE 1 LINES 
         (VaccineName);
         
-LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring 2021/Databases/databases/data/Vaccination-Drive.csv' INTO TABLE VaccinationDrive
+LOAD DATA LOCAL INFILE '/Users/jodie/Desktop/School/Spring_2021/Databases/databases/data/Vaccination-Drive.csv' INTO TABLE VaccinationDrive
         FIELDS OPTIONALLY ENCLOSED BY '"'
         TERMINATED BY ',' 
         LINES TERMINATED BY '\r\n'
