@@ -1,4 +1,29 @@
 Aditi Sen, asen6
 Jodie Hoh, jhoh5
 
-No special instructions needed.
+We used external css and javascript methods to create the look of the database. Ensure that all the files are chmod o+r and that all the folders are chmod o+x
+For a list of all our sql scripts with their associated commands, here is a list. They do not need to be in any particular order:
+
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < comm_disease.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < continent_vaccine_disease.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < country_vaccination.sql
+
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < delete_country.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < delete_disease.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < delete_vaccination.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < government_disease.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < highest_cases.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < highest_mortality_rate.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < income_comm_disease.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < income_disease.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < insert_country.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < insert_disease.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < insert_vaccination.sql
+
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < less_mortality_disease.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < letter_income_mortality.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < most_recent_doses.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < population_history.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < top_government_disease.sql
+mysql -h dbase.cs.jhu.edu -u StaffUsername -D DBName -p < vaccine_doses.sql
+
