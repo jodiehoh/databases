@@ -1,5 +1,5 @@
 <head>
-   <title>Vaccine Doses</title>
+   <title>Letter Income Mortality</title>
 </head>
 <body>
 <link rel="stylesheet" href="assets/css/main.css" />
@@ -8,34 +8,37 @@ include 'open.php';
 
 //Override the PHP configuration file to display all errors
 //This is useful during development but generally disabled before release
-//ini_set('error_reporting', E_ALL);
-//ini_set('display_errors', true);
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', true);
 
-if (isset($_POST['count'])) {
-    $count = $_POST['count'];
+if (isset($_POST['startSeq'])) {
+    $start = $_POST['startSeq'];
+}
+if (isset($_POST['income'])) {
+    $income = $_POST['income'];
 }
 
-
-echo "<h2 style=\"text-align:center\">Vaccine Doses</h2>";
+echo "<h2 style=\"text-align:center\">Starting Sequence-Income-Mortality</h2>";
 
 //Determine if any input was actually collected
-if (empty($count)) {
+if (empty($start) or empty($income)) {
    echo "empty <br><br>";
 
 } else {
 
-   echo "<h3 style=\"text-align:center\">".$count."+ Vaccine Doses</h3></br>";
+   echo "<h3 style=\"text-align:center\">".$income." country starting with '".$start."' with highest mortality rate.</h3></br>";
 
+   echo "<br><br>";
    //Prepare a statement that we can later execute. The ?'s are placeholders for
    //parameters whose values we will set before we run the query.
-   if ($stmt = $conn->prepare("CALL VaccineDoses(?)")) {
+   if ($stmt = $conn->prepare("CALL LetterIncomeMortality(?, ?)")) {
 
       //Attach the ? in prepared statements to variables (even if those variables
       //don't hold the values we want yet).  First parameter is a list of types of
       //the variables that follow: 's' means string, 'i' means integer, 'd' means
       //double. E.g., for a statment with 3 ?'s, where middle parameter is an integer
       //and the other two are strings, the first argument included should be "sis".
-      $stmt->bind_param("i", $count);
+      $stmt->bind_param("ss", $start, $income);
 
       //Run the actual query
       if ($stmt->execute()) {
@@ -46,46 +49,16 @@ if (empty($count)) {
          if ($result->num_rows == 0) {
 
             //Result contains no rows at all
-            echo "No country with more than ".$count." vaccine doses.";
+            echo "No info.";
 
          } else {
-            //Report result set by visiting each row in it
 
-            $rows = array();
-            while ($row = $result->fetch_row()) {
-                  $rows[$row[0]][] = $row[1];
-            } 
+		 $row = $result->fetch_row();
+		 $value = floatval($row[1]) * 100;
+            echo "<p style=\"text-align:center\"> Country: ".$row[0]."<br>";
+            echo "Mortality rate: ".$value."% </p>";
 
-	    
-	    echo "<table border =\"2px solid black\">";
-            echo "<tr><td><b>Country</b></td><td><b>Vaccines</b></td></tr>";
-
-	    foreach ($rows as $key => $value) {
-             // $arr[3] will be updated with each value from $arr...
-               echo "<tr>";
-	       echo "<td>".$key."</td>";
-	       echo "<td>".implode(" ", $value)."</td>";
-               echo "</tr>";
-	    }
-	    echo "</table>";
-            /*
-               $row = $result->fetch_row();
-               echo "<b>".row[0].": </b>".row[1].", ";
-               $prev = $row;
-
-               while ($row = $result->fetch_row()) {
-                  
-                  if(row[0] == prev[0]) {
-                     echo row[1].", ";
-                  } else {
-                     echo "\b\b<br><br>";
-                     echo "<b>".row[0].": </b>".row[1].", ";
-                     $prev = $row;
-                  }
-
-               } 
-               */
-         }	 
+         }   
 
          //We are done with the result set returned above, so free it
          $result->free_result();
@@ -93,7 +66,7 @@ if (empty($count)) {
       } else {
 
          //Call to execute failed, e.g. because server is no longer reachable,
-	 //or because supplied values are of the wrong type
+   //or because supplied values are of the wrong type
          echo "Execute failed.<br>";
       }
 
@@ -114,6 +87,9 @@ if (empty($count)) {
 //Close the connection created in open.php
 $conn->close();
 ?>
+
+<script>
+</script>
 
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="assets/js/canvasjs.min.js"></script>
