@@ -65,16 +65,17 @@ if (empty($start) or empty($conti) or empty($end) or empty($income) or empty($ca
             echo "No info.";
 
          } else {
-              $rows = array();
-              echo "<table border =\"2px solid black\">";
-              echo "<tr><td>Country</td><td>Number of Cases</td></tr>";
+              $data = array();
+              
+
+
               while ($row = $result->fetch_row()) {
-                echo "<tr>";
-                echo "<td>".$row[0]."</td>";
-                echo "<td>".$row[1]."</td>";
-                echo "</tr>";
-	         } 
-              echo "</table>";
+                  $obj = NULL;
+                  $obj->label = $row[0];
+                  $obj->y = $row[1];
+                  $json = $obj;
+                  array_push($data, $json);
+         }
 
               
               
@@ -108,7 +109,23 @@ if (empty($start) or empty($conti) or empty($end) or empty($income) or empty($ca
 $conn->close();
 ?>
 
-<script>
+<script>window.onload = function () {
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+  title: {
+    text: "Case History"
+  },
+  axisY: {
+    title: "Number of Cases"
+  },
+  data: [{
+    type: "line",
+     dataPoints: <?php echo json_encode($data) ?>
+  }]
+});
+chart.render();
+ 
+}
 </script>
 
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
