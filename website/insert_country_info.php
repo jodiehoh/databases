@@ -36,8 +36,8 @@ if (empty($country) or empty($year) or empty($male) or empty($female) or empty($
 
 } else {
 
-   echo "<h3 style=\"text-align:center\">".$country." ".$year"</h3></br>";
-   echo "<h3 style=\"text-align:center\">".$male." ".$female." ".$density"</h3></br>";
+   echo "<h3 style=\"text-align:center\">".$country." ".$year."</h3></br>";
+   echo "<h3 style=\"text-align:center\">".$male." ".$female." ".$density."</h3></br>";
 
    echo "<br><br>";
    //Prepare a statement that we can later execute. The ?'s are placeholders for
@@ -59,7 +59,7 @@ if (empty($country) or empty($year) or empty($male) or empty($female) or empty($
 
          print ($result);
 
-         if ($result == true) {
+         if ($result) {
             echo "<h3 style=\"text-align:center\"> Success </h3></br>";
          }
          else {
