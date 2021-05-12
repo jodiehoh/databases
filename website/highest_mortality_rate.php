@@ -57,7 +57,7 @@ if (empty($top) or empty($continent) or empty($year)) {
          } else {
               $rows = array();
               echo "<table border =\"2px solid black\">";
-              echo "<tr><td>Country</td><td>Mortality Rate</td></tr>";
+              echo "<tr><td><b>Country</b></td><td><b>Mortality Rate</b></td></tr>";
 	      while ($row = $result->fetch_row()) {
 		$value = $row[1] * 100;
                 echo "<tr>";

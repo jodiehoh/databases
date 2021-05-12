@@ -40,7 +40,7 @@
 													<input type="text" name="disease1" id="disease1" value="" />
 													<br>
 													Year: 
-													<input type="number" name="year1" id="year1" value="" />
+													<input type="number" min=1950 max=2100 name="year1" id="year1" value="" />
 													<br>
 													<input type="submit" name="submit" id="submit" value="Submit" />
 											</form>
@@ -72,9 +72,9 @@
 															<option value = "0">Non-communicable</option>
 												</select>
 												<br>
-												Start Year: <input type="number" name="year21" id="year21" value="" />
+												Start Year: <input type="number" min=1950 max=2100 name="year21" id="year21" value="" />
 												<br>
-												End Year: <input type="number" name="year22" id="year22" value="" />
+												End Year: <input type="number" min=1950 max=2100 name="year22" id="year22" value="" />
 												<br>
 												<input type="submit" name="submit" id="submit" value="Submit" />
 											</form>
@@ -190,10 +190,10 @@
 										</header>
 										<div class="content">
 											<form method="post" action="less_mortality_disease.php">
-												Mortality rate less than <input type="number" name="mrpercent" id="mrpercent" value="" />%
+												Mortality rate less than <input type="number" min=0 name="mrpercent" id="mrpercent" value="" />%
 												<br>
-												from year <input type="number" name="year61" id="year61" value="" /> 
-												to <input type="number" name="year62" id="year62" value="" />
+												from year <input type="number"min=1950 max=2100 name="year61" id="year61" value="" /> 
+												to <input type="number" min=1950 max=2100 name="year62" id="year62" value="" />
 												<br>
 												<input type="submit" name="submit" id="submit" value="Submit" />
 											
@@ -237,7 +237,7 @@
 												</select>
 												<br>
 												More than 
-												<input type="number" name="cases7" id="cases7" value="" />
+												<input type="number" min=0 name="cases7" id="cases7" value="" />
 												cases
 												<br>
 												Disease type:
@@ -246,8 +246,8 @@
 														<option value = "0">Non-communicable</option>
 												</select>
 												<br>
-												from year <input type="number" name="year71" id="year71" value="" /> 
-												to <input type="number" name="year72" id="year72" value="" />
+												from year <input type="number" name="year71" min=1950 max=2100 id="year71" value="" /> 
+												to <input type="number" name="year72" min=1950 max=2100 id="year72" value="" />
 												<br>
 												<input type="submit" name="submit" id="submit" value="Submit" />
 											

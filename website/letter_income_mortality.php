@@ -26,7 +26,7 @@ if (empty($start) or empty($income)) {
 
 } else {
 
-   echo "<h3 style=\"text-align:center\">".$income." country starting with \'".$start."\' with highest mortality rate.</h3></br>";
+   echo "<h3 style=\"text-align:center\">".$income." country starting with '".$start."' with highest mortality rate.</h3></br>";
 
    echo "<br><br>";
    //Prepare a statement that we can later execute. The ?'s are placeholders for

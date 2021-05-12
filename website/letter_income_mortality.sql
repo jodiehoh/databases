@@ -14,7 +14,7 @@ SELECT DISTINCT M.CountryName, M.MortalityRate
 FROM MortalityRate AS M, Country AS C
 WHERE C.CountryName = M.CountryName AND M.MortalityRate = (SELECT MAX(MortalityRate)
 FROM MortalityRate AS M, Country AS C
-WHERE M.CountryName LIKE LOWER(CONCAT(letter,'%')) AND C.IncomeGroup = incomeType AND M.CountryName = C.CountryName);
+WHERE LOWER(M.CountryName) LIKE LOWER(CONCAT(letter,'%')) AND C.IncomeGroup = incomeType AND M.CountryName = C.CountryName);
 
 END; //
 
