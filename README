@@ -1,0 +1,14 @@
+Aditi Sen, asen6
+Jodie Hoh, jhoh5
+
+Phase C corrections: 
+
+1. We tried switching to relative path but the data wouldn't load. We are sorry for the extra trouble you have to go through to run our code :(
+2. We got rid of the corrupted data.
+3. We tried looking 2019-2020 data but there were major difference on different websites. Since it was not available on our original source, we didn't include it since we wanted the data to be consistent with our existing data.
+4. We didn't have time to include GDP/development data.
+
+Phase D corrections:
+
+1. We changed our third query to show the population percentage for each type of government with a certain disease. We also made a CanvaJS visual for comparison. 
+2. We changed our fourth query to show the information for every continent.
