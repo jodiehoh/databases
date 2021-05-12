@@ -39,8 +39,7 @@ if (empty($country) or empty($continent) or empty($government) or empty($region)
 
 } else {
 
-   echo "<h3 style=\"text-align:center\">".$country." </br> ".$continent."</h3>";
-   echo "<h3 style=\"text-align:center\">".$government." </br>  ".$region." </br> ".$income."</h3></br>";
+   echo "<h3 style=\"text-align:center\">".$country." </br> ".$continent." </br> ".$government." </br>  ".$region." </br> ".$income."</h3></br>";
 
    echo "<br><br>";
    //Prepare a statement that we can later execute. The ?'s are placeholders for
