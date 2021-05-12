@@ -105,7 +105,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
     {
       type: "rangeColumn",
       yValueFormatString: "##",
-      toolTipContent: "{label}<br>Starting Dose: {y[1]}<br>Recent Dose: {y[0]}",
+      toolTipContent: "{label}<br>Starting Dose: {y[0]}<br>Recent Dose: {y[1]}",
       dataPoints: <?php echo json_encode($data, JSON_NUMERIC_CHECK); ?>
     }
   ]
