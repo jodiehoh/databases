@@ -1,5 +1,5 @@
 <head>
-   <title>Letter Income Mortality</title>
+   <title>Starting Sequence-Income-Mortality</title>
 </head>
 <body>
 <link rel="stylesheet" href="assets/css/main.css" />
@@ -18,7 +18,7 @@ if (isset($_POST['income'])) {
     $income = $_POST['income'];
 }
 
-echo "<h2 style=\"text-align:center\">Letter Income Mortality</h2>";
+echo "<h2 style=\"text-align:center\">Starting Sequence-Income-Mortality</h2>";
 
 //Determine if any input was actually collected
 if (empty($start) or empty($income)) {
