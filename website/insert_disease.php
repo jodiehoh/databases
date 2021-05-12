@@ -19,7 +19,7 @@ if (isset($_POST['comm'])) {
     $comm = $_POST['comm'];
 }
 
-echo "<h2 style=\"text-align:center\">Add new Country</h2>";
+echo "<h2 style=\"text-align:center\">Add new Disease</h2>";
 
 //Determine if any input was actually collected
 if (empty($disease) or empty($comm)) {
