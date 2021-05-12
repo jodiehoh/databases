@@ -1,0 +1,21 @@
+Aditi Sen, asen6
+Jodie Hoh, jhoh5
+
+Members: Aditi Sen, Jodie Hoh
+
+Modifications:
+Our domain for phase A was population demographics, which included a wide spectrum of data including health, education, economic status, religion to name a few. We narrowed it down to just health data, which is a broad enough topic by itself. As a result, a lot of our questions changed as they were focussed more on health and diseases now. Since our data also included basic country and population information, we used different sources for all the data we used.
+
+Process:
+From phase C, we weeded out all the corrupted data manually.
+
+Successes:
+1. Our queries. Our questions are more complex than they seem and most of the queries took us at least 30 minutes to jot down. After that, we would often need to make changes to output the correct results.
+2. Our plots. At first, it was incredibly difficult for us to convert our queries into meaningful visuals. In a short amount of time, we learned how to use CanvaJS and we used several plots to depict different kinds of data. We chose plots that we thought would represent our data best and had to look up documentation for each kind of plot. 
+
+Known Issues:
+We unfortunately ran out of time and were not able to fully implement the insertion and deletion of tuples from the relations with foreign key constraints. Our functionality works for the remaining relations. We even have all the SQL files implemented for all relations with or without foreign keys but we don't have the corresponding php files.
+
+Extensions:
+1. A map. We tried to implement an interactive map on our website that would represent all information for a country when it was hovered over. For queries that returned countries and a number, we would have liked to color-shade each country depending on the maginitude of the number to represent something like the severity of a disease or vaccination rates. 
+2. A drop down menu for countries, diseases, etc. These can be cumbersome to type so we wanted to make them more user-friendly with a drop down menu. However, we couldn't figure out a way to return a list from SQL to PHP to HTML.
