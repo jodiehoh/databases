@@ -70,9 +70,10 @@ if (empty($start) or empty($conti) or empty($end) or empty($income) or empty($ca
 
 
               while ($row = $result->fetch_row()) {
-                  $obj = NULL;
+		      $obj = NULL;
+		      $val = intval($row[1]);
                   $obj->label = $row[0];
-                  $obj->y = $row[1];
+                  $obj->y = $val;
                   $json = $obj;
                   array_push($data, $json);
          }
@@ -114,7 +115,10 @@ $conn->close();
 var chart = new CanvasJS.Chart("chartContainer", {
   title: {
     text: "Case History"
-  },
+},
+	axisX: {
+	interval: 1
+},
   axisY: {
     title: "Number of Cases"
   },
@@ -127,7 +131,7 @@ chart.render();
  
 }
 </script>
-
+<div id="chartContainer" style="height: 370px; max-width: 900px; margin: 0px auto;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="assets/js/canvasjs.min.js"></script>
 </body>

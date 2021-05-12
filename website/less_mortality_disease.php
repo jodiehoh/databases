@@ -63,7 +63,7 @@ if (empty($start) or empty($mr) or empty($end)) {
                   $obj = NULL;
                   $obj->label = $row[0];
                   $obj->y = $row[1];
-                  array_push($data, $json);
+                  array_push($data, $obj);
          }
 
               
@@ -107,9 +107,6 @@ animationEnabled: true,
 title:{
   text:"Diseases by Country"
 },
-axisX:{
-  interval: 1
-},
 axisY2:{
   interlacedColor: "rgba(1,77,101,.2)",
   gridColor: "rgba(1,77,101,.1)",
@@ -127,7 +124,7 @@ chart.render();
 
 }
 </script>
-
+<div id="chartContainer" style="height: 370px; max-width: 900px; margin: 0px auto;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="assets/js/canvasjs.min.js"></script>
 </body>
