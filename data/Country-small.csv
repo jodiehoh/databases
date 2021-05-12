@@ -1,12 +1,12 @@
-Continent,CountryName,Government,CountryCode,Region,IncomeGroup,,CountryID
-Asia,India,Republic,IND,South Asia,Lower middle income,,IN
-Asia,Afghanistan,Republic,AFG,South Asia,Low income,,AF
-Oceania,Australia,Republic,AUS,East Asia & Pacific,High income,,AU
-Africa,Algeria,Republic,DZA,Middle East & North Africa,Lower middle income,,DZ
-Europe,Hungary,Republic,HUN,Europe & Central Asia,High income,,HU
-North America,United States of America,Republic,USA,North America,High income,,US
-Oceania,Solomon Islands,Constitutional Monarchy,SLB,East Asia & Pacific,Lower middle income,,SB
-Oceania,Tonga,Constitutional Monarchy,TON,East Asia & Pacific,Upper middle income,,TO
-South America,Bolivia,Republic,BOL,Latin America & Caribbean,Lower middle income,,BO
-South America,Brazil,Republic,BRA,Latin America & Caribbean,Upper middle income,,BR
-South America,Chile,Republic,CHL,Latin America & Caribbean,High income,,CL
+Continent,CountryName,Government,CountryCode,Region,IncomeGroup
+Asia,India,Republic,IND,South Asia,Lower middle income
+Asia,Afghanistan,Republic,AFG,South Asia,Low income
+Oceania,Australia,Republic,AUS,East Asia & Pacific,High income
+Africa,Algeria,Republic,DZA,Middle East & North Africa,Lower middle income
+Europe,Hungary,Republic,HUN,Europe & Central Asia,High income
+North America,United States of America,Republic,USA,North America,High income
+Oceania,Solomon Islands,Constitutional Monarchy,SLB,East Asia & Pacific,Lower middle income
+Oceania,Tonga,Constitutional Monarchy,TON,East Asia & Pacific,Upper middle income
+South America,Bolivia,Republic,BOL,Latin America & Caribbean,Lower middle income
+South America,Brazil,Republic,BRA,Latin America & Caribbean,Upper middle income
+South America,Chile,Republic,CHL,Latin America & Caribbean,High income
